@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Pets do Adopt Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f7f0fc;
+            color: #4a274f;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #c49ac9;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #4a274f;
+            font-size: 16px;
+        }
+
+        input[type="text"]::placeholder {
+            color: #9b6e9d;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 80%;
+        }
+
+        li {
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #ffffff;
+            border: 1px solid #e1bde2;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #4a274f;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #ffffff;
+            border-top: 2px solid #c49ac9;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #4a274f;
+            width: 80%;
+        }
+
+        footer a {
+            color: #5e2e68;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .historico {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+        }
+
+        .historico ul {
+            text-align: center;
+        }
+
+        .btn-pet {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #c49ac9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-pet:hover {
+            background-color: #9b6e9d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Raky.jpg" alt="Logo da Raky">
+        <h2>Pesquisa de Pets do Adopt Me</h2>
+    </header>
+
+    <input type="text" id="pesquisa" onkeyup="buscarPet()" placeholder="Pesquise pelo nome do pet...">
+
+    <ul id="listaPets">
+        <!-- Aqui aparecerão os resultados da pesquisa -->
+    </ul>
+
+    <div class="historico">
+        <h3>Histórico de pesquisas:</h3>
+        <ul id="historicoPesquisas">
+            <!-- Aqui aparecerá o histórico de pesquisas -->
+        </ul>
+    </div>
+
+    <button class="btn-pet" onclick="window.location.href='https://raquelsantos380.github.io/Aba-de-Pets/'">Não encontrou algum pet? Clique aqui!</button>
+
+    <script>
+        const pets = [
+        { nome: "Dragao Sombrio", categoria: "Lendario", valor: 429.99 },
+        { nome: "Dragao Morcego", categoria: "Lendario", valor: 472.99 },
+        { nome: "Girafa", categoria: "Lendario", valor: 269.99 },
+        { nome: "Ovo Safari", categoria: "Lendario", valor: 284.99 },
+        { nome: "Dragao de Gelo", categoria: "Lendario", valor: 214.99 },
+        { nome: "Coruja", categoria: "Lendario", valor: 162.99 },
+        { nome: "Papagaio", categoria: "Lendario", valor: 129.99 },
+        { nome: "Ovo da selva", categoria: "Lendario", valor: 79.99 },
+        { nome: "Ovo da fazenda", categoria: "Lendario", valor: 29.99 },
+        { nome: "Unicornio maligno", categoria: "Lendario", valor: 106.99 },
+        { nome: "Corvo", categoria: "Lendario", valor: 107.99 },
+        { nome: "Rei Macaco", categoria: "Lendario", valor: 29.99 },
+        { nome: "Rena ártica", categoria: "Lendario", valor: 44.99 },
+        { nome: "Ovo de natal", categoria: "Lendario", valor: 18 },
+        { nome: "Capricórnio", categoria: "Lendario", valor: 2.99 },
+        { nome: "Macaco Albino", categoria: "Lendario", valor: 23.99 },
+        { nome: "Libélula", categoria: "Lendario", valor: 0.99 },
+        { nome: "Tartaruga", categoria: "Lendario", valor: 26.99 },
+        { nome: "Faisão de peito preto", categoria: "Lendario", valor: 0.99 },
+        { nome: "Albatroz de diamante", categoria: "Lendario", valor: 1.50 },
+        { nome: "Besouro gigante dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Canguru", categoria: "Lendario", valor: 19.99 },
+        { nome: "Dragão de Lava", categoria: "Lendario", valor: 6.50 },
+        { nome: "Dragão Morcego de Morango", categoria: "Lendario", valor: 19.99 },
+        { nome: "Cavalo Justo Morto-vivo", categoria: "Lendario", valor: 9.99 },
+        { nome: "Borboleta Diamante", categoria: "Lendario", valor: 144.90 },
+        { nome: "Lobo Lava", categoria: "Lendario", valor: 1.35 },
+        { nome: "Fúria do gelo", categoria: "Lendario", valor: 7.99 },
+        { nome: "Mechapup", categoria: "Lendario", valor: 1.25 },
+        { nome: "Dragão Fantasma Branco de Halloween", categoria: "Lendario", valor: 4.99 },
+        { nome: "Dragão Chinês Dançante", categoria: "Lendario", valor: 6.50 },
+        { nome: "Camaleão", categoria: "Lendario", valor: 0.99 },
+        { nome: "Golem de Gelo", categoria: "Lendario", valor: 3.99 },
+        { nome: "Dragão Lavanda", categoria: "Lendario", valor: 4.99 },
+        { nome: "Diamond King Penguin", categoria: "Lendario", valor: 3.99 },
+        { nome: "Golden Chow-Chow", categoria: "Lendario", valor: 1.50 },
+        { nome: "Lula", categoria: "Lendario", valor: 0.99 },
+        { nome: "Planador de Açúcar", categoria: "Lendario", valor: 7.50 },
+        { nome: "Cavalo Alado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Unicórnio de diamante", categoria: "Lendario", valor: 0.99 },
+        { nome: "Abelha rainha", categoria: "Lendario", valor: 1.50 },
+        { nome: "Macaco ninja", categoria: "Lendario", valor: 2.50 },
+        { nome: "Esqueleto Rex", categoria: "Lendario", valor: 4.99 },
+        { nome: "Dragão de diamante", categoria: "Lendario", valor: 0.99 },
+        { nome: "Borboleta verde", categoria: "Lendario", valor: 1.80 },
+        { nome: "Cavalo de justa", categoria: "Lendario", valor: 1.90 },
+        { nome: "Quimera", categoria: "Lendario", valor: 0.99 },
+        { nome: "Albatros Dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Black Chow-Chow", categoria: "Lendario", valor: 0.99 },
+        { nome: "Pônei Tan Shetland", categoria: "Lendario", valor: 0.99 },
+        { nome: "Dragão Antigo", categoria: "Lendario", valor: 0.99 },
+        { nome: "Morsa Dourada", categoria: "Lendario", valor: 0.99 },
+        { nome: "Gamo", categoria: "Lendario", valor: 0.99 },
+        { nome: "Chow-Chow de Chocolate", categoria: "Lendario", valor: 0.99 },
+        { nome: "Joaninha de Diamante", categoria: "Lendario", valor: 0.99 },
+        { nome: "Falcão", categoria: "Lendario", valor: 0.99 },
+        { nome: "Pinguim-rei dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Faisão-de-peito-verde", categoria: "Lendario", valor: 0.99 },
+        { nome: "Dragão mariposa de gelo", categoria: "Lendario", valor: 0.99 },
+        { nome: "Ovo de diamante", categoria: "Lendario", valor: 0.99 },
+        { nome: "Alicórnio", categoria: "Lendario", valor: 0.99 },
+        { nome: "Grifo de diamante", categoria: "Lendario", valor: 0.99 },
+        { nome: "Ovo australiano", categoria: "Lendario", valor: 2.99 },
+        { nome: "Rato dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Fênix", categoria: "Lendario", valor: 0.99 },
+        { nome: "Dodô", categoria: "Lendario", valor: 0.99 },
+        { nome: "Pinguim Dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Tubarão", categoria: "Lendario", valor: 0.99 },
+        { nome: "Tiranossauro Rex", categoria: "Lendario", valor: 3.99 },
+        { nome: "Unicórnio Dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Polvo", categoria: "Lendario", valor: 1.39 },
+        { nome: "Chifre Dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Dragão Dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Abelha Rei", categoria: "Lendario", valor: 0.99 },
+        { nome: "Joaninha Dourada", categoria: "Lendario", valor: 0.99 },
+        { nome: "Coruja ártica", categoria: "Lendario", valor: 0.99 },
+        { nome: "Axolote", categoria: "Lendario", valor: 0.99 },
+        { nome: "Ovo dourado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Baku", categoria: "Lendario", valor: 0.99 },
+        { nome: "Maneki-Neko", categoria: "Lendario", valor: 0.99 },
+        { nome: "Gato múmia dourada de halloween", categoria: "Lendario", valor: 0.99 },
+        { nome: "Cobra", categoria: "Lendario", valor: 0.99 },
+        { nome: "Leão guardião", categoria: "Lendario", valor: 0.99 },
+        { nome: "Grifo dorado", categoria: "Lendario", valor: 0.99 },
+        { nome: "Filhote de minion do zodíaco", categoria: "Lendario", valor: 0.99 },
+        { nome: "Unicórnio", categoria: "Lendario", valor: 0.99 },
+        { nome: "Pavão", categoria: "Lendario", valor: 0.99 },
+        { nome: "Cerberus", categoria: "Lendario", valor: 0.99 },
+        { nome: "Tigre dourado lunar", categoria: "Lendario", valor: 0.99 },
+         { nome: "Ouriço-do-mar", categoria: "Ultra Raro", valor: 54.99 },
+        { nome: "Dálmata", categoria: "Ultra Raro", valor: 39.99 },
+        { nome: "Flamingo", categoria: "Ultra Raro", valor: 19.99 },
+        { nome: "Leão", categoria: "Ultra Raro", valor: 18.99 },
+        { nome: "Lobo de Gelo", categoria: "Ultra Raro", valor: 4.99 },
+        { nome: "Rena de Gengibre", categoria: "Ultra Raro", valor: 1.20 },
+        { nome: "Jacaré", categoria: "Ultra Raro", valor: 19.99 },
+        { nome: "Papagaio-do-mar", categoria: "Ultra Raro", valor: 5.99 },
+        { nome: "Búfalo Zumbi", categoria: "Ultra Raro", valor: 3.99 },
+        { nome: "Ornitorrinco", categoria: "Ultra Raro", valor: 2.99 },
+        { nome: "Rinoceronte Lanudo", categoria: "Ultra Raro", valor: 2.99 },
+        { nome: "Peru", categoria: "Ultra Raro", valor: 2.50 },
+        { nome: "Lhama", categoria: "Ultra Raro", valor: 5.99 },
+        { nome: "Cabra", categoria: "Ultra Raro", valor: 7.99 },
+        { nome: "Raposa do Gelo", categoria: "Ultra Raro", valor: 6.99 },
+        { nome: "Borboleta Roxa", categoria: "Ultra Raro", valor: 15.99 },
+        { nome: "Orca", categoria: "Ultra Raro", valor: 0.99 },
+        { nome: "Spaniel de Água Irlandês", categoria: "Ultra Raro", valor: 0.80 },
+        { nome: "Carneiro", categoria: "Ultra Raro", valor: 60 },
+        { nome: "Macaco de Negócios", categoria: "Ultra Raro", valor: 0.80 },
+        { nome: "Bola de Neve", categoria: "Ultra Raro", valor: 0.99 },
+        { nome: "Lobo Zumbi", categoria: "Ultra Raro", valor: 0.99 },
+        { nome: "Cordeiro", categoria: "Ultra Raro", valor: 2.99 },
+        { nome: "Pônei Shetland Branco", categoria: "Ultra Raro", valor: 1.99 },
+        { nome: "Coelho Fantasma", categoria: "Ultra Raro", valor: 3.99 },
+        { nome: "Yeti", categoria: "Ultra Raro", valor: 1.80 },
+        { nome: "Rinoceronte", categoria: "Raro", valor: 3.99 },
+        { nome: "Urso marrom", categoria: "Raro", valor: 4.99 },
+        { nome: "Porco", categoria: "Raro", valor: 6.60 },
+        { nome: "Cisne", categoria: "Raro", valor: 2.99 },
+        { nome: "Urso polar", categoria: "Raro", valor: 4.99 },
+        { nome: "Rena", categoria: "Raro", valor: 2.99 },
+        { nome: "Lince", categoria: "Raro", valor: 4.99 },
+        { nome: "Vaca", categoria: "Raro", valor: 24.99 },
+        { nome: "Elefante", categoria: "Raro", valor: 17.99 },
+        { nome: "Hiena", categoria: "Raro", valor: 4.99 }
+        ];
+
+        const historico = [];
+
+        function buscarPet() {
+            const input = document.getElementById('pesquisa');
+            const filtro = input.value.toLowerCase();
+            const lista = document.getElementById('listaPets');
+            lista.innerHTML = '';
+
+            if (filtro) {
+                historico.length = 0; // Limpa o histórico
+                historico.push(filtro); // Adiciona apenas o último termo
+                atualizarHistorico();
+            }
+
+            pets.forEach(pet => {
+                if (pet.nome.toLowerCase().includes(filtro)) {
+                    const item = document.createElement('li');
+                    item.textContent = `${pet.nome} - ${pet.categoria} - Valor: ${pet.valor}`;
+                    lista.appendChild(item);
+                }
+            });
+        }
+
+        function atualizarHistorico() {
+            const historicoLista = document.getElementById('historicoPesquisas');
+            historicoLista.innerHTML = '';
+
+            historico.forEach(termo => {
+                const item = document.createElement('li');
+                item.textContent = termo;
+                historicoLista.appendChild(item);
+            });
+        }
+    </script>
+
+    <footer>
+        <p>© 2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
+    </footer>
+</body>
+</html>

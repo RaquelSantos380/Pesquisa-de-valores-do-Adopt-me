@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Pets do Adopt Me</title>
+    <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f7f0fc;
-            color: #4a274f;
+            background-color: #f2e4d9; /* Cor de fundo mais quente */
+            color: #5c3a3a; /* Texto em tom mais quente */
         }
 
         header {
@@ -27,19 +27,33 @@
             margin-bottom: 10px;
         }
 
-        input[type="text"] {
+        .search-container {
+            position: relative;
             width: 80%;
-            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 40px 10px 40px; /* espaço para a lupa */
             margin: 10px 0;
-            border: 2px solid #c49ac9;
+            border: 2px solid #d8b4a0; /* Borda em tom mais quente */
             border-radius: 5px;
-            background-color: #ffffff;
-            color: #4a274f;
+            background-color: #ffffff; /* Fundo do input */
+            color: #5c3a3a; /* Texto do input em tom mais quente */
             font-size: 16px;
         }
 
         input[type="text"]::placeholder {
             color: #9b6e9d;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
         }
 
         ul {
@@ -51,14 +65,14 @@
         li {
             padding: 8px;
             margin: 5px 0;
-            background-color: #ffffff;
+            background-color: #ffffff; /* Fundo dos itens da lista */
             border: 1px solid #e1bde2;
             border-radius: 5px;
             text-align: center;
         }
 
         h2, h3 {
-            color: #4a274f;
+            color: #5c3a3a; /* Títulos em tom mais quente */
             text-align: center;
         }
 
@@ -67,10 +81,10 @@
             padding: 10px;
             text-align: center;
             background-color: #ffffff;
-            border-top: 2px solid #c49ac9;
+            border-top: 2px solid #d8b4a0; /* Borda em tom mais quente */
             border-radius: 5px;
             font-size: 14px;
-            color: #4a274f;
+            color: #5c3a3a; /* Texto do footer em tom mais quente */
             width: 80%;
         }
 
@@ -96,7 +110,7 @@
         .btn-pet {
             padding: 10px 20px;
             margin-top: 20px;
-            background-color: #c49ac9;
+            background-color: #d8b4a0; /* Botão em tom mais quente */
             color: white;
             border: none;
             border-radius: 5px;
@@ -107,16 +121,20 @@
         .btn-pet:hover {
             background-color: #9b6e9d;
         }
+
+        .zap-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .zap {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px; /* Espaço entre o ícone e o texto */
+        }
     </style>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de Pets do Adopt Me</title>
-    
-    <!-- Link para a favicon -->
-    <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
 </head>
 <body>
     <header>
@@ -124,12 +142,11 @@
         <h2>Pesquisa de Pets do Adopt Me</h2>
     </header>
 
-    <input type="text" id="pesquisa" onkeyup="buscarPet()" placeholder="Pesquise pelo nome do pet...">
-</body>
-</html>
-
-
-
+    <div class="search-container">
+        <img src="lupa.png" alt="Lupa" class="search-icon">
+        <input type="text" id="pesquisa" onkeyup="buscarPet()" placeholder="Pesquise pelo nome do pet...">
+    </div>
+    
     <ul id="listaPets">
         <!-- Aqui aparecerão os resultados da pesquisa -->
     </ul>
@@ -141,7 +158,12 @@
         </ul>
     </div>
 
-    <button class="btn-pet" onclick="window.location.href='https://raquelsantos380.github.io/Estoque/'">Não encontrou algum pet? Clique aqui!</button>
+    <button class="btn-pet" onclick="window.location.href='https://wa.me/62992900737'">Não encontrou algum pet? Clique aqui!</button>
+
+    <div class="zap-container">
+        <img src="zap.png" alt="Zap" class="zap" onclick="window.open('https://wa.me/62992900737', '_blank');">
+        <span>Fale conosco!</span>
+    </div>
 
     <script>
         const pets = [

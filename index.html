@@ -7,13 +7,13 @@
     <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f2e4d9; /* Cor de fundo mais quente */
+            background-color: #ffe4f2; /* Rosa claro */
             color: #5c3a3a; /* Texto em tom mais quente */
         }
 
@@ -34,7 +34,7 @@
 
         input[type="text"] {
             width: 100%;
-            padding: 10px 40px 10px 40px; /* espaço para a lupa */
+            padding: 10px 40px;
             margin: 10px 0;
             border: 2px solid #d8b4a0; /* Borda em tom mais quente */
             border-radius: 5px;
@@ -63,7 +63,7 @@
         }
 
         li {
-            padding: 8px;
+            padding: 10px;
             margin: 5px 0;
             background-color: #ffffff; /* Fundo dos itens da lista */
             border: 1px solid #e1bde2;
@@ -72,29 +72,8 @@
         }
 
         h2, h3 {
-            color: #5c3a3a; /* Títulos em tom mais quente */
+            color: #c2185b; /* Títulos em tom mais quente */
             text-align: center;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            text-align: center;
-            background-color: #ffffff;
-            border-top: 2px solid #d8b4a0; /* Borda em tom mais quente */
-            border-radius: 5px;
-            font-size: 14px;
-            color: #5c3a3a; /* Texto do footer em tom mais quente */
-            width: 80%;
-        }
-
-        footer a {
-            color: #5e2e68;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
         }
 
         .historico {
@@ -110,7 +89,7 @@
         .btn-pet {
             padding: 10px 20px;
             margin-top: 20px;
-            background-color: #d8b4a0; /* Botão em tom mais quente */
+            background-color: #ff80ab; /* Botão em tom mais quente */
             color: white;
             border: none;
             border-radius: 5px;
@@ -119,7 +98,7 @@
         }
 
         .btn-pet:hover {
-            background-color: #9b6e9d;
+            background-color: #f06292;
         }
 
         .zap-container {
@@ -130,9 +109,30 @@
 
         .zap {
             cursor: pointer;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             margin-right: 10px; /* Espaço entre o ícone e o texto */
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border-top: 2px solid #d8b4a0; /* Borda em tom mais quente */
+            border-radius: 5px;
+            font-size: 14px;
+            color: #5c3a3a; /* Texto do footer em tom mais quente */
+            width: 80%;
+        }
+
+        footer a {
+            color: #c2185b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -158,7 +158,7 @@
         </ul>
     </div>
 
-    <button class="btn-pet" onclick="window.location.href='https://wa.me/62992900737'">Nao encontrou algum pet? Clique aqui!</button>
+    <button class="btn-pet" onclick="window.location.href='https://wa.me/62992900737'">Não encontrou algum pet? Clique aqui!</button>
 
     <div class="zap-container">
         <img src="zap.png" alt="Zap" class="zap" onclick="window.open('https://wa.me/62992900737', '_blank');">
@@ -348,7 +348,7 @@ const pets = [
     </script>
 
     <footer>
-        <p> 2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
+        <p>2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
     </footer>
 </body>
 </html>
@@ -358,7 +358,6 @@ const pets = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento via PIX - Adopt Me</title>
     <link rel="icon" href="Raky.jpg" type="image/jpg">
     
     <!-- Fontes do Google Fonts -->
@@ -478,14 +477,11 @@ const pets = [
 </head>
 <body>
     <div class="container">
-        <h1>Pagamento via PIX</h1>
+
         <div class="content">
-            <p>Aguardando o pagamento ser realizado. Escreva o valor e calcule.</p>
-            <p>Em caso de dúvidas dos valores, consulte nosso site de pesquisa:</p>
-            
+
          
             
-            <p>Nosso site não possui estrutura para carrinho, mas você pode calcular os valores:</p>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -495,7 +491,7 @@ const pets = [
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2e4d9;
+            background-color: f9e5ed; /* Fundo em um tom suave de rosa */
             margin: 0;
             padding: 0;
             position: relative;
@@ -505,56 +501,58 @@ const pets = [
             position: fixed;
             bottom: 20px;
             right: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
+            border: 1px solid #e0a3b0; /* Borda em um tom de rosa mais escuro */
+            background-color: #ffffff; /* Fundo branco para a calculadora */
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 200px; /* Diminuindo a largura */
-            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 220px; /* Largura ajustada */
+            padding: 10px; /* Aumentando o padding */
             display: flex;
             flex-direction: column;
             z-index: 1000; /* Para garantir que a calculadora fique acima de outros elementos */
         }
 
         #calcInput {
-            width: 100%;
-            height: 30px; /* Diminuindo a altura */
-            font-size: 20px; /* Diminuindo o tamanho da fonte */
+            width: 100%; /* Ajustado para 100% da largura */
+            height: 40px; /* Aumentando a altura dos campos de entrada */
+            font-size: 20px;
             text-align: right;
             margin-bottom: 10px;
             padding: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #f9e5ed; /* Borda em rosa */
             border-radius: 5px;
+            background-color: #f9e5ed; /* Fundo suave para o campo de entrada */
         }
 
         .calc-button {
-            width: 45px; /* Diminuindo a largura dos botões */
-            height: 45px; /* Diminuindo a altura dos botões */
-            font-size: 18px; /* Diminuindo o tamanho da fonte dos botões */
-            margin: 2px;
+            width: 40px; /* Aumentando a largura dos botões */
+            height: 40px; /* Aumentando a altura dos botões */
+            font-size: 18px;
+            margin: 5px; /* Aumentando a margem */
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #f0f0f0;
+            background-color: #f8c8d0; /* Fundo em rosa claro */
             transition: background-color 0.3s;
         }
 
         .calc-button:hover {
-            background-color: #e0e0e0;
+            background-color: #f1b2c4; /* Tom mais escuro no hover */
         }
 
         .button-equal {
-            background-color: #4CAF50;
+            background-color: #d57c99; /* Botão igual em um tom de rosa mais escuro */
             color: white;
         }
 
         .button-equal:hover {
-            background-color: #45a049;
+            background-color: #ce6b89; /* Tom mais escuro no hover */
         }
 
         #calcResult {
-            font-size: 16px; /* Diminuindo o tamanho da fonte do resultado */
+            font-size: 16px;
             margin-top: 10px;
+            color: #d57c99; /* Cor do texto do resultado em rosa */
         }
     </style>
 </head>
@@ -606,53 +604,49 @@ const pets = [
                 document.getElementById("calcResult").innerText = "Erro de cálculo!";
             }
         }
-    </script>
-</body>
-</html>
+    }
+</script>
+</body> </html>
+ 
+        
+        <!-- Botão de copiar chave PIX -->
+        <button class="copy-button" onclick="copyPix()">Copiar Chave PIX</button>
+        
+        <p class="instructions">Abra seu app bancário, escolha "Pagar com PIX" e copie a chave no botão acima.</p>
+        <p class="email">raquelgata780@gmail.com</p>
+        <p class="phone">62992900737</p>
 
-
-            
-            <p>Utilize a chave PIX para realizar o pagamento:</p>
-            <p class="email">raquelgata780@gmail.com</p>
-            <p class="phone">62992900737</p>
-            
-            <!-- Botão de copiar chave PIX -->
-            <button class="copy-button" onclick="copyPix()">Copiar Chave PIX</button>
-            
-            <p class="instructions">Abra seu app bancário, escolha "Pagar com PIX" e insira a chave acima.</p>
-
-            <!-- Botão para acessar após pagamento -->
-            <button class="button-receive" onclick="window.open('https://rakyofficialstore.wordpress.com/como-receber/', '_blank')">Receber após o pagamento</button>
-        </div>
+        <!-- Botão para acessar após pagamento -->
+        <button class="button-receive" onclick="window.open('https://rakyofficialstore.wordpress.com/como-receber/', '_blank')">Receber após o pagamento</button>
     </div>
+</div>
 
-    <script>
-        let calcInput = "";
+<script>
+    let calcInput = "";
 
-        function appendToCalculator(value) {
-            calcInput += value;
-            document.getElementById("calcInput").value = calcInput;
+    function appendToCalculator(value) {
+        calcInput += value;
+        document.getElementById("calcInput").value = calcInput;
+    }
+
+    function clearCalculator() {
+        calcInput = "";
+        document.getElementById("calcInput").value = "";
+        document.getElementById("calcResult").innerText = "Resultado: ";
+    }
+
+    function calculate() {
+        try {
+            const result = eval(calcInput.replace('×', '*'));
+            document.getElementById("calcResult").innerText = "Resultado: " + result;
+        } catch {
+            document.getElementById("calcResult").innerText = "Erro de cálculo!";
         }
+    }
 
-        function clearCalculator() {
-            calcInput = "";
-            document.getElementById("calcInput").value = "";
-            document.getElementById("calcResult").innerText = "Resultado: ";
-        }
-
-        function calculate() {
-            try {
-                const result = eval(calcInput.replace('×', '*'));
-                document.getElementById("calcResult").innerText = "Resultado: " + result;
-            } catch {
-                document.getElementById("calcResult").innerText = "Erro de cálculo!";
-            }
-        }
-
-        function copyPix() {
-            const pixKey = "raquelgata780@gmail.com";
-            navigator.clipboard.writeText(pixKey).then(() => alert("Chave PIX copiada!"));
-        }
-    </script>
-</body>
-</html>
+    function copyPix() {
+        const pixKey = "raquelgata780@gmail.com";
+        navigator.clipboard.writeText(pixKey).then(() => alert("Chave PIX copiada!"));
+    }
+</script>
+</body> </html>

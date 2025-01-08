@@ -13,7 +13,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #ffe4f2; /* Rosa claro */
+            background-color: #F7D3D3; /* Rosa claro */
             color: #5c3a3a; /* Texto em tom mais quente */
         }
 
@@ -25,6 +25,17 @@
         header img {
             height: 80px;
             margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #c2185b; /* Cor do título */
+            border: 2px solid #d8b4a0; /* Borda em tom mais quente */
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fff; /* Fundo do título */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+            margin: 20px 0; /* Margem superior e inferior */
         }
 
         .search-container {
@@ -347,15 +358,9 @@ const pets = [
         }
     </script>
 
-    <footer>
-        <p>2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
-    </footer>
-</body>
-</html>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Raky.jpg" type="image/jpg">
@@ -482,16 +487,14 @@ const pets = [
 
          
             
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Flutuante</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: f9e5ed; /* Fundo em um tom suave de rosa */
+            background-color: #f9e5ed; /* Fundo em um tom suave de rosa */
             margin: 0;
             padding: 0;
             position: relative;
@@ -501,27 +504,34 @@ const pets = [
             position: fixed;
             bottom: 20px;
             right: 20px;
-            border: 1px solid #e0a3b0; /* Borda em um tom de rosa mais escuro */
+            border: 1px solid #f2b2c5; /* Borda em um tom de rosa mais claro */
             background-color: #ffffff; /* Fundo branco para a calculadora */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 220px; /* Largura ajustada */
-            padding: 10px; /* Aumentando o padding */
+            width: 230px; /* Largura ajustada */
+            padding: 5px; /* Aumentando o padding */
             display: flex;
             flex-direction: column;
             z-index: 1000; /* Para garantir que a calculadora fique acima de outros elementos */
         }
 
         #calcInput {
-            width: 100%; /* Ajustado para 100% da largura */
-            height: 40px; /* Aumentando a altura dos campos de entrada */
+            width: 90%; /* Ajustado para 100% da largura */
+            height: 30px; /* Aumentando a altura dos campos de entrada */
             font-size: 20px;
             text-align: right;
             margin-bottom: 10px;
             padding: 5px;
-            border: 1px solid #f9e5ed; /* Borda em rosa */
+            border: 1px solid #f2b2c5; /* Borda em rosa mais claro */
             border-radius: 5px;
-            background-color: #f9e5ed; /* Fundo suave para o campo de entrada */
+            background-color: #fce4eb; /* Fundo suave para o campo de entrada, rosa mais claro */
+        }
+
+        #calcResult {
+            font-size: 20px; /* Aumentando o tamanho da fonte do resultado */
+            margin-bottom: 10px; /* Margem inferior para espaçamento */
+            color: #e88da0; /* Cor do texto do resultado em um rosa mais claro */
+            text-align: right; /* Alinhando o texto à direita */
         }
 
         .calc-button {
@@ -532,27 +542,30 @@ const pets = [
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #f8c8d0; /* Fundo em rosa claro */
+            background-color: #f8d0d7; /* Fundo em rosa mais claro */
             transition: background-color 0.3s;
         }
 
         .calc-button:hover {
-            background-color: #f1b2c4; /* Tom mais escuro no hover */
+            background-color: #f1a3b2; /* Tom mais escuro no hover */
         }
 
         .button-equal {
-            background-color: #d57c99; /* Botão igual em um tom de rosa mais escuro */
+            background-color: #e88da0; /* Botão igual em um tom de rosa mais claro */
             color: white;
         }
 
         .button-equal:hover {
-            background-color: #ce6b89; /* Tom mais escuro no hover */
+            background-color: #d78e9b; /* Tom mais escuro no hover */
         }
 
-        #calcResult {
-            font-size: 16px;
-            margin-top: 10px;
-            color: #d57c99; /* Cor do texto do resultado em rosa */
+        .button-clear {
+            background-color: #ffcccc; /* Cor para o botão de apagar em um rosa bem claro */
+            color: white;
+        }
+
+        .button-clear:hover {
+            background-color: #ff9999; /* Tom mais escuro no hover */
         }
     </style>
 </head>
@@ -561,6 +574,7 @@ const pets = [
     <div class="floating-calculator">
         <h3>Calculadora</h3>
         <input type="text" id="calcInput" readonly />
+        <p id="calcResult">Resultado: </p>
         <div>
             <button class="calc-button" onclick="appendToCalculator('7')">7</button>
             <button class="calc-button" onclick="appendToCalculator('8')">8</button>
@@ -585,7 +599,9 @@ const pets = [
             <button class="calc-button button-equal" onclick="calculate()">=</button>
             <button class="calc-button" onclick="appendToCalculator('/')">/</button>
         </div>
-        <p id="calcResult">Resultado: </p>
+        <div>
+            <button class="calc-button button-clear" onclick="clearCalculator()">C</button>
+        </div>
     </div>
 
     <script>
@@ -596,16 +612,23 @@ const pets = [
             document.getElementById("calcInput").value = calcInput;
         }
 
+        function clearCalculator() {
+            calcInput = ""; // Limpa o cálculo atual
+            document.getElementById("calcInput").value = ""; // Limpa o campo de entrada
+            document.getElementById("calcResult").innerText = "Resultado: "; // Reseta o resultado
+        }
+
         function calculate() {
             try {
                 const result = eval(calcInput.replace('×', '*').replace(',', '.'));
-                document.getElementById("calcResult").innerText = "Resultado: " + result;
+                document.getElementById("calcInput").value = ""; // Limpa o campo de entrada após cálculo
+                calcInput = ""; // Limpa o cálculo atual
+                document.getElementById("calcResult").innerText = "Resultado: " + result; // Mostra o resultado
             } catch {
                 document.getElementById("calcResult").innerText = "Erro de cálculo!";
             }
         }
-    }
-</script>
+    </script>
 </body> </html>
  
         
@@ -649,4 +672,9 @@ const pets = [
         navigator.clipboard.writeText(pixKey).then(() => alert("Chave PIX copiada!"));
     }
 </script>
-</body> </html>
+
+        <p>2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
+    </footer>
+</body>
+</html>
+

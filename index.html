@@ -488,37 +488,40 @@ const pets = [
          
             
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Flutuante</title>
+    <link rel="icon" href="Raky.jpg" type="image/jpg">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9e5ed; /* Fundo em um tom suave de rosa */
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe4f2; /* Rosa claro */
             margin: 0;
             padding: 0;
             position: relative;
         }
-        
+
         .floating-calculator {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
             border: 1px solid #f2b2c5; /* Borda em um tom de rosa mais claro */
             background-color: #ffffff; /* Fundo branco para a calculadora */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 230px; /* Largura ajustada */
-            padding: 5px; /* Aumentando o padding */
-            display: flex;
-            flex-direction: column;
+            width: 200px; /* Largura ajustada */
+            padding: 10px; /* Aumentando o padding */
+            display: none; /* Inicialmente oculta */
             z-index: 1000; /* Para garantir que a calculadora fique acima de outros elementos */
         }
 
         #calcInput {
-            width: 90%; /* Ajustado para 100% da largura */
-            height: 30px; /* Aumentando a altura dos campos de entrada */
-            font-size: 20px;
+            width: calc(100% - 20px);
+            height: 30px;
+            font-size: 16px;
             text-align: right;
             margin-bottom: 10px;
             padding: 5px;
@@ -527,54 +530,47 @@ const pets = [
             background-color: #fce4eb; /* Fundo suave para o campo de entrada, rosa mais claro */
         }
 
-        #calcResult {
-            font-size: 20px; /* Aumentando o tamanho da fonte do resultado */
-            margin-bottom: 10px; /* Margem inferior para espaçamento */
-            color: #e88da0; /* Cor do texto do resultado em um rosa mais claro */
-            text-align: right; /* Alinhando o texto à direita */
-        }
-
         .calc-button {
-            width: 40px; /* Aumentando a largura dos botões */
-            height: 40px; /* Aumentando a altura dos botões */
-            font-size: 18px;
-            margin: 5px; /* Aumentando a margem */
+            width: 30px; /* Aumentando a largura dos botões */
+            height: 30px; /* Aumentando a altura dos botões */
+            font-size: 16px;
+            margin: 2px; /* Aumentando a margem */
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #f8d0d7; /* Fundo em rosa mais claro */
+            background-color: #ffc4e3; /* Fundo em rosa mais claro */
             transition: background-color 0.3s;
         }
 
         .calc-button:hover {
-            background-color: #f1a3b2; /* Tom mais escuro no hover */
+            background-color: #ff99cc; /* Tom mais escuro no hover */
         }
 
-        .button-equal {
-            background-color: #e88da0; /* Botão igual em um tom de rosa mais claro */
+        #toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff4081; /* Cor do botão */
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             color: white;
-        }
-
-        .button-equal:hover {
-            background-color: #d78e9b; /* Tom mais escuro no hover */
-        }
-
-        .button-clear {
-            background-color: #ffcccc; /* Cor para o botão de apagar em um rosa bem claro */
-            color: white;
-        }
-
-        .button-clear:hover {
-            background-color: #ff9999; /* Tom mais escuro no hover */
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px; /* Centraliza o texto verticalmente */
         }
     </style>
 </head>
 <body>
 
-    <div class="floating-calculator">
-        <h3>Calculadora</h3>
+    <button id="toggle-button" onclick="toggleCalculator()">🧮</button>
+
+    <div class="floating-calculator" id="calculator">
+        <h3 style="text-align: center; color: #c2185b; font-size: 18px;">Calculadora</h3>
         <input type="text" id="calcInput" readonly />
-        <p id="calcResult">Resultado: </p>
         <div>
             <button class="calc-button" onclick="appendToCalculator('7')">7</button>
             <button class="calc-button" onclick="appendToCalculator('8')">8</button>
@@ -596,16 +592,21 @@ const pets = [
         <div>
             <button class="calc-button" onclick="appendToCalculator('0')">0</button>
             <button class="calc-button" onclick="appendToCalculator(',')">,</button>
-            <button class="calc-button button-equal" onclick="calculate()">=</button>
+            <button class="calc-button" onclick="calculate()">=</button>
             <button class="calc-button" onclick="appendToCalculator('/')">/</button>
         </div>
         <div>
-            <button class="calc-button button-clear" onclick="clearCalculator()">C</button>
+            <button class="calc-button" onclick="clearCalculator()">C</button>
         </div>
     </div>
 
     <script>
         let calcInput = "";
+
+        function toggleCalculator() {
+            const calculator = document.getElementById("calculator");
+            calculator.style.display = (calculator.style.display === "none" || calculator.style.display === "") ? "block" : "none";
+        }
 
         function appendToCalculator(value) {
             calcInput += value;
@@ -615,7 +616,6 @@ const pets = [
         function clearCalculator() {
             calcInput = ""; // Limpa o cálculo atual
             document.getElementById("calcInput").value = ""; // Limpa o campo de entrada
-            document.getElementById("calcResult").innerText = "Resultado: "; // Reseta o resultado
         }
 
         function calculate() {
@@ -623,15 +623,16 @@ const pets = [
                 const result = eval(calcInput.replace('×', '*').replace(',', '.'));
                 document.getElementById("calcInput").value = ""; // Limpa o campo de entrada após cálculo
                 calcInput = ""; // Limpa o cálculo atual
-                document.getElementById("calcResult").innerText = "Resultado: " + result; // Mostra o resultado
+                document.getElementById("calcInput").value = result; // Mostra o resultado
             } catch {
-                document.getElementById("calcResult").innerText = "Erro de cálculo!";
+                document.getElementById("calcInput").value = "Erro!";
             }
         }
     </script>
-</body> </html>
- 
-        
+
+</body>
+</html>
+
         <!-- Botão de copiar chave PIX -->
         <button class="copy-button" onclick="copyPix()">Copiar Chave PIX</button>
         
@@ -677,4 +678,3 @@ const pets = [
     </footer>
 </body>
 </html>
-

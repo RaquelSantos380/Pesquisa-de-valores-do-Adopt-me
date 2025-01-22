@@ -5,111 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Pets do Adopt Me</title>
     <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9; /* Cor de fundo mais neutra */
+            margin: 0;
+            padding: 0;
+            color: #444;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            margin: 0;
-            background-color: #F7D3D3; /* Rosa claro */
-            color: #5c3a3a; /* Texto em tom mais quente */
         }
 
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         header img {
             height: 80px;
-            margin-bottom: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            font-size: 20px;
-            color: #c2185b; /* Cor do título */
-            border: 2px solid #d8b4a0; /* Borda em tom mais quente */
-            border-radius: 10px;
-            padding: 15px;
-            background-color: #fff; /* Fundo do título */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
-            margin: 20px 0; /* Margem superior e inferior */
+            font-family: 'Playfair Display', serif;
+            color: #e91e63; /* Cor moderna */
+            font-size: 30px;
+            margin: 10px 0;
         }
 
         .search-container {
             position: relative;
-            width: 80%;
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 20px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px 40px;
-            margin: 10px 0;
-            border: 2px solid #d8b4a0; /* Borda em tom mais quente */
-            border-radius: 5px;
-            background-color: #ffffff; /* Fundo do input */
-            color: #5c3a3a; /* Texto do input em tom mais quente */
-            font-size: 16px;
+            padding: 15px 50px;
+            border: 2px solid #e91e63;
+            border-radius: 30px;
+            font-size: 18px;
+            background-color: #fff;
+            color: #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
         }
 
-        input[type="text"]::placeholder {
-            color: #9b6e9d;
+        input[type="text"]:focus {
+            border-color: #d81b60; /* Cor da borda em foco */
+            outline: none;
         }
 
         .search-icon {
             position: absolute;
-            left: 10px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
-            width: 80%;
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         li {
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #ffffff; /* Fundo dos itens da lista */
-            border: 1px solid #e1bde2;
-            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #ffffff;
+            border: 1px solid #e1bee7;
+            border-radius: 10px;
             text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         h2, h3 {
-            color: #c2185b; /* Títulos em tom mais quente */
+            color: #d81b60; /* Cor moderna */
             text-align: center;
         }
 
         .historico {
             margin-top: 20px;
-            text-align: center;
-            width: 80%;
-        }
-
-        .historico ul {
-            text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
 
         .btn-pet {
-            padding: 10px 20px;
+            padding: 15px 30px;
             margin-top: 20px;
-            background-color: #ff80ab; /* Botão em tom mais quente */
+            background-color: #e91e63;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
 
         .btn-pet:hover {
-            background-color: #f06292;
+            background-color: #d81b60;
         }
 
         .zap-container {
@@ -122,7 +132,7 @@
             cursor: pointer;
             width: 40px;
             height: 40px;
-            margin-right: 10px; /* Espaço entre o ícone e o texto */
+            margin-right: 10px;
         }
 
         footer {
@@ -130,27 +140,87 @@
             padding: 20px;
             text-align: center;
             background-color: #ffffff;
-            border-top: 2px solid #d8b4a0; /* Borda em tom mais quente */
+            border-top: 2px solid #e91e63;
             border-radius: 5px;
-            font-size: 14px;
-            color: #5c3a3a; /* Texto do footer em tom mais quente */
-            width: 80%;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
 
         footer a {
-            color: #c2185b;
+            color: #e91e63;
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Estilos da calculadora */
+        .floating-calculator {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            border: 2px solid #e91e63;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+
+        #calcInput {
+            width: calc(85% - 20px);
+            height: 30px;
+            font-size: 18px;
+            text-align: right;
+            margin-bottom: 10px;
+            border: 1px solid #e91e63;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #fce4eb;
+        }
+
+        .calc-button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffe0f0;
+            transition: background-color 0.3s;
+        }
+
+        .calc-button:hover {
+            background-color: #ff99cc;
+        }
+
+        #toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #e91e63;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 28px;
+            text-align: center;
+            line-height: 60px;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="Raky.jpg" alt="Logo da Raky">
-        <h2>Pesquisa de Pets do Adopt Me</h2>
+        <h1>Pesquisa de Pets do Adopt Me</h1>
     </header>
 
     <div class="search-container">
@@ -163,7 +233,7 @@
     </ul>
 
     <div class="historico">
-        <h3>Historico de pesquisas:</h3>
+        <h3>Histórico de pesquisas:</h3>
         <ul id="historicoPesquisas">
             <!-- Aqui aparecerá o histórico de pesquisas -->
         </ul>
@@ -176,400 +246,10 @@
         <span>Fale conosco!</span>
     </div>
 
-    <script>
-const pets = [
-    { nome: "Dragao Sombrio", categoria: "Lendario", valor: 434.99 },
-    { nome: "Dragao Morcego", categoria: "Lendario", valor: 494.99 },
-    { nome: "Girafa", categoria: "Lendario", valor: 289.99 },
-    { nome: "Dragao de Gelo", categoria: "Lendario", valor: 224.99 },
-    { nome: "Coruja", categoria: "Lendario", valor: 174.99 },
-    { nome: "Papagaio", categoria: "Lendario", valor: 134.99 },
-    { nome: "Unicornio Maligno", categoria: "Lendario", valor: 109.99 },
-    { nome: "Corvo", categoria: "Lendario", valor: 114.99 },
-    { nome: "Leao Em Chamas", categoria: "Lendario", valor: 74.99 },
-    { nome: "Rena Arctica", categoria: "Lendario", valor: 49.90 },
-    { nome: "Rei Macaco", categoria: "Lendario", valor: 34.90 },
-    { nome: "Dalmata", categoria: "Ultra-Raro", valor: 39.90 },
-    { nome: "Tartaruga", categoria: "Lendario", valor: 26.99 },
-    { nome: "Macaco Albino", categoria: "Lendario", valor: 24.99 },
-    { nome: "Vaca", categoria: "Raro", valor: 25.99 },
-    { nome: "Ovo de Natal", categoria: "Lendario", valor: 24.99 },
-    { nome: "Flamingo", categoria: "Ultra-Raro", valor: 19.99 },
-    { nome: "Leao", categoria: "Ultra-Raro", valor: 18.99 },
-    { nome: "Cachorro Azul", categoria: "Incomum", valor: 9.99 },
-    { nome: "Pelicano", categoria: "Ultra-Raro", valor: 8.99 },
-    { nome: "Canguru", categoria: "Lendario", valor: 19.99 },
-    { nome: "Elefante", categoria: "Raro", valor: 16.50 },
-    { nome: "Crocodilo", categoria: "Ultra-Raro", valor: 19.99 },
-    { nome: "Unicornio de Balao", categoria: "Lendario", valor: 9.99 },
-    { nome: "Dragao Morcego Fada", categoria: "Lendario", valor: 15.99 },
-    { nome: "Dragao de Chocolate", categoria: "Lendario", valor: 19.99 },
-    { nome: "Mashapup", categoria: "Lendario", valor: 1 },
-    { nome: "Gato Rosa", categoria: "Incomum", valor: 9.90 },
-    { nome: "Dragao de Lava", categoria: "Lendario", valor: 7.99 },
-    { nome: "Dragao Fantasma", categoria: "Lendario", valor: 2.99 },
-    { nome: "Capricornio", categoria: "Lendario", valor: 4.50 },
-    { nome: "Ornitorrinco", categoria: "Ultra-Raro", valor: 3.50 },
-    { nome: "Rinoceronte", categoria: "Lendario", valor: 2.99 },
-    { nome: "Ovo de Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Lobo de Gelo", categoria: "Lendario", valor: 1.90 },
-    { nome: "Polvo", categoria: "Lendario", valor: 1 },
-    { nome: "Camaleao", categoria: "Lendario", valor: 1 },
-    { nome: "Dragao Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Tubarao", categoria: "Lendario", valor: 1 },
-    { nome: "Griffo Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Abelha Rainha", categoria: "Lendario", valor: 3.99 },
-    { nome: "Coruja da Neve", categoria: "Lendario", valor: 1 },
-    { nome: "Lobo de Lava", categoria: "Lendario", valor: 2.50 },
-    { nome: "Fenix", categoria: "Lendario", valor: 1.50 },
-    { nome: "Rena", categoria: "Lendario", valor: 2.50 },
-    { nome: "Quimera", categoria: "Lendario", valor: 1 },
-    { nome: "Vagalume", categoria: "Lendario", valor: 1 },
-    { nome: "Capivara", categoria: "Incomum", valor: 2.50 },
-    { nome: "Morsa Dourada", categoria: "Lendario", valor: 1.90 },
-    { nome: "Urso de Natal", categoria: "Lendario", valor: 4.50 },
-    { nome: "Dragao Antigo", categoria: "Lendario", valor: 1 },
-    { nome: "Faisao Peito Verde", categoria: "Lendario", valor: 1 },
-    { nome: "Joaninha Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Falcao", categoria: "Lendario", valor: 1 },
-    { nome: "Abelha Rei", categoria: "Lendario", valor: 4.50 },
-    { nome: "Gorila Astronauta", categoria: "Lendario", valor: 1 },
-    { nome: "Coruja da Neve", categoria: "Lendario", valor: 1 },
-    { nome: "Rena", categoria: "Raro", valor: 2.50 },
-    { nome: "Lobo de Lava", categoria: "Lendario", valor: 1 },
-    { nome: "Cavalo de Justa", categoria: "Lendario", valor: 1 },
-    { nome: "Polvo", categoria: "Lendario", valor: 1 },
-    { nome: "Fenix", categoria: "Lendario", valor: 1 },
-    { nome: "Borboleta Verde", categoria: "Lendario", valor: 1 },
-    { nome: "Gargula", categoria: "Lendario", valor: 1 },
-    { nome: "Peru", categoria: "Ultra-Raro", valor: 2.50 },
-    { nome: "Quimera", categoria: "Lendario", valor: 1 },
-    { nome: "Beija-flor", categoria: "Ultra-Raro", valor: 1.90 },
-    { nome: "Cisne", categoria: "Raro", valor: 2.50 },
-    { nome: "Pato bobo", categoria: "Incomum", valor: 2.50 },
-    { nome: "Pintinho Maligno", categoria: "Lendario", valor: 1 },
-    { nome: "Nautilus", categoria: "Ultra-Raro", valor: 2.99 },
-    { nome: "Hamster Dourado", categoria: "Lendario", valor: 3.99 },
-    { nome: "Dragao Naga", categoria: "Lendario", valor: 1.75 },
-    { nome: "Urso Polar", categoria: "Raro", valor: 3.99 },
-    { nome: "Camundongo de Campo", categoria: "Lendario", valor: 1 },
-    { nome: "Kraken", categoria: "Lendario", valor: 0.99 },
-    { nome: "Cervo Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Espinossauro", categoria: "Lendario", valor: 1 },
-    { nome: "Amigo Cogumelo", categoria: "Lendario", valor: 1 },
-    { nome: "Amigo Cacto", categoria: "Lendario", valor: 1 },
-    { nome: "Criossphinx", categoria: "Lendario", valor: 1 },
-    { nome: "Vaga-lume", categoria: "Lendario", valor: 1 },
-    { nome: "Pinguim Rei Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Spaniel do Palacio Real", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Pinguim Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Unicornio", categoria: "Lendario", valor: 1.59 },
-    { nome: "Capivara", categoria: "Incomum", valor: 2.99 },
-    { nome: "Mecha Meow", categoria: "Lendario", valor: 1 },
-    { nome: "Albatros Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Alicorn", categoria: "Lendario", valor: 1 },
-    { nome: "Morsa Dourada", categoria: "Lendario", valor: 1 },
-    { nome: "Urso de Natal", categoria: "Lendario", valor: 1 },
-    { nome: "Dragao Antigo", categoria: "Lendario", valor: 1 },
-    { nome: "Faisao de Peito Verde", categoria: "Lendario", valor: 1 },
-    { nome: "Joaninha Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Falcao", categoria: "Lendario", valor: 1 },
-    { nome: "Abelha Rei", categoria: "Lendario", valor: 1 },
-    { nome: "Drake", categoria: "Incomum", valor: 1 },
-    { nome: "Frango", categoria: "Comum", valor: 1 },
-    { nome: "Cordeiro", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Mahi Mahi Diamante", categoria: "Lendario", valor: 1 },
-    { nome: "Dolar de Areia Vermelho", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Unicornio Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Cachorro de Milho", categoria: "Lendario", valor: 1 },
-    { nome: "Cervo Do Mal", categoria: "Lendario", valor: 1 },
-    { nome: "Coelho Fantasma", categoria: "Ultra-Raro", valor: 2.99 },
-    { nome: "Ovo Fossil", categoria: "Lendario", valor: 5.50 },
-    { nome: "Fleur De Gelo", categoria: "Lendario", valor: 1 },
-    { nome: "Pet Bola de Neve", categoria: "Ultra-Raro", valor: 3.99 },
-    { nome: "Rinoceronte La", categoria: "Ultra-Raro", valor: 3.50 },
-    { nome: "Filhote de Tubarao", categoria: "Lendario", valor: 2.99 },
-    { nome: "Ovo Desertico Real", categoria: "Lendario", valor: 1 },
-    { nome: "Cavalo Sem Cabeca", categoria: "Ultra-Raro", valor: 0.99 },
-    { nome: "Baku", categoria: "Lendario", valor: 1 },
-    { nome: "Maneki-Neko", categoria: "Lendario", valor: 1 },
-    { nome: "Cerbero", categoria: "Lendario", valor: 1 },
-    { nome: "Pedra Maligna", categoria: "Raro", valor: 1 },
-    { nome: "Axolote", categoria: "Lendario", valor: 1 },
-    { nome: "Dragao Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Cobra", categoria: "Lendario", valor: 1 },
-    { nome: "Joaninha Dourada", categoria: "Lendario", valor: 1 },
-    { nome: "Leao Guardiao", categoria: "Lendario", valor: 1 },
-    { nome: "Cao Robo", categoria: "Lendario", valor: 1 },
-    { nome: "Macaco de Negocios", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Corvo Espantalho", categoria: "Lendario", valor: 1 },
-    { nome: "Macaco de Brinquedo", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Pavao", categoria: "Lendario", valor: 1 },
-    { nome: "Gato Mumia Dourada de Halloween", categoria: "Lendario", valor: 1 },
-    { nome: "Libelula", categoria: "Lendario", valor: 1 },
-    { nome: "Zebra Flamingo", categoria: "Raro", valor: 1 },
-    { nome: "Grifo Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Coruja Pesadelo", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Chickatrice Maligna", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Ovo Dourado", categoria: "Lendario", valor: 1 },
-    { nome: "Pintinho", categoria: "Comum", valor: 1 },
-    { nome: "Chow-Chow Preto", categoria: "Lendario", valor: 1 },
-    { nome: "Dragao", categoria: "Lendario", valor: 1 },
-    { nome: "Grifo", categoria: "Lendario", valor: 1 },
-    { nome: "Kitsune", categoria: "Lendario", valor: 1 },
-    { nome: "Perdiz", categoria: "Ultra-Raro", valor: 1 },
-    { nome: "Ovo do Oceano", categoria: "Lendario", valor: 0.25 },
-    { nome: "Urso Lunar", categoria: "Lendario", valor: 1 },
-];
-
-
-        const historico = [];
-
-        function buscarPet() {
-            const input = document.getElementById('pesquisa');
-            const filtro = input.value.toLowerCase();
-            const lista = document.getElementById('listaPets');
-            lista.innerHTML = '';
-
-            if (filtro) {
-                historico.length = 0; // Limpa o historico
-                historico.push(filtro); // Adiciona apenas o último termo
-                atualizarHistorico();
-            }
-
-            pets.forEach(pet => {
-                if (pet.nome.toLowerCase().includes(filtro)) {
-                    const item = document.createElement('li');
-                    item.textContent = `${pet.nome} - ${pet.categoria} - Valor: ${pet.valor}`;
-                    lista.appendChild(item);
-                }
-            });
-        }
-
-        function atualizarHistorico() {
-            const historicoLista = document.getElementById('historicoPesquisas');
-            historicoLista.innerHTML = '';
-
-            historico.forEach(termo => {
-                const item = document.createElement('li');
-                item.textContent = termo;
-                historicoLista.appendChild(item);
-            });
-        }
-    </script>
-
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Raky.jpg" type="image/jpg">
-    
-    <!-- Fontes do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <style>
-        /* Fontes e estilos globais */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffe4f2; /* Rosa claro */
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: white;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            color: #c2185b;
-            text-align: center;
-            font-size: 38px;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-        }
-        p, button, input, textarea {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .payment-method, .button-research, .copy-button, .contact-form button {
-            background-color: #ff80ab;
-            color: white;
-            padding: 12px 25px;
-            font-size: 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .payment-method:hover, .button-research:hover, .copy-button:hover, .contact-form button:hover {
-            background-color: #f06292;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        .email, .phone {
-            font-weight: bold;
-            color: #d32f2f;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        .instructions {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #555;
-        }
-        .calculator {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        .calc-button {
-            font-size: 18px;
-            padding: 10px;
-            margin: 5px;
-            width: 50px;
-            height: 50px;
-            border-radius: 5px;
-            background-color: #ffc4e3;
-            color: #333;
-            border: none;
-            cursor: pointer;
-        }
-        .calc-button:hover {
-            background-color: #ff99cc;
-        }
-        .button-equal {
-            background-color: #ff4081;
-            color: white;
-        }
-        .button-equal:hover {
-            background-color: #e91e63;
-        }
-        #calcInput {
-            width: calc(100% - 20px);
-            height: 50px;
-            font-size: 18px;
-            text-align: right;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 5px;
-        }
-        .button-receive {
-            display: block;
-            margin: 30px auto 0;
-            background-color: #4caf50;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .button-receive:hover {
-            background-color: #388e3c;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-
-        <div class="content">
-
-         
-            
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Flutuante</title>
-    <link rel="icon" href="Raky.jpg" type="image/jpg">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffe4f2; /* Rosa claro */
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
-        .floating-calculator {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            border: 1px solid #f2b2c5; /* Borda em um tom de rosa mais claro */
-            background-color: #ffffff; /* Fundo branco para a calculadora */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 200px; /* Largura ajustada */
-            padding: 10px; /* Aumentando o padding */
-            display: none; /* Inicialmente oculta */
-            z-index: 1000; /* Para garantir que a calculadora fique acima de outros elementos */
-        }
-
-        #calcInput {
-            width: calc(100% - 20px);
-            height: 30px;
-            font-size: 16px;
-            text-align: right;
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #f2b2c5; /* Borda em rosa mais claro */
-            border-radius: 5px;
-            background-color: #fce4eb; /* Fundo suave para o campo de entrada, rosa mais claro */
-        }
-
-        .calc-button {
-            width: 30px; /* Aumentando a largura dos botões */
-            height: 30px; /* Aumentando a altura dos botões */
-            font-size: 16px;
-            margin: 2px; /* Aumentando a margem */
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #ffc4e3; /* Fundo em rosa mais claro */
-            transition: background-color 0.3s;
-        }
-
-        .calc-button:hover {
-            background-color: #ff99cc; /* Tom mais escuro no hover */
-        }
-
-        #toggle-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #ff4081; /* Cor do botão */
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            line-height: 50px; /* Centraliza o texto verticalmente */
-        }
-    </style>
-</head>
-<body>
-
     <button id="toggle-button" onclick="toggleCalculator()">🧮</button>
 
     <div class="floating-calculator" id="calculator">
-        <h3 style="text-align: center; color: #c2185b; font-size: 18px;">Calculadora</h3>
+        <h3 style="text-align: center; color: #e91e63; font-size: 18px;">Calculadora</h3>
         <input type="text" id="calcInput" readonly />
         <div>
             <button class="calc-button" onclick="appendToCalculator('7')">7</button>
@@ -601,6 +281,185 @@ const pets = [
     </div>
 
     <script>
+        const pets = [
+            { nome: "Dragao Sombrio", categoria: "Lendario", valor: 434.99 },
+            { nome: "Dragao Morcego", categoria: "Lendario", valor: 599.99 },
+            { nome: "Girafa", categoria: "Lendario", valor: 304.99 },
+            { nome: "Dragao de Gelo", categoria: "Lendario", valor: 234.99 },
+            { nome: "Coruja", categoria: "Lendario", valor: 189.99 },
+            { nome: "Papagaio", categoria: "Lendario", valor: 154.99 },
+            { nome: "Unicornio Maligno", categoria: "Lendario", valor: 116.99 },
+            { nome: "Corvo", categoria: "Lendario", valor: 120.99 },
+            { nome: "Leao Em Chamas", categoria: "Lendario", valor: 74.99 },
+            { nome: "Rena Arctica", categoria: "Lendario", valor: 49.90 },
+            { nome: "Rei Macaco", categoria: "Lendario", valor: 34.90 },
+            { nome: "Dalmata", categoria: "Ultra-Raro", valor: 39.90 },
+            { nome: "Tartaruga", categoria: "Lendario", valor: 26.99 },
+            { nome: "Macaco Albino", categoria: "Lendario", valor: 24.99 },
+            { nome: "Vaca", categoria: "Raro", valor: 25.99 },
+            { nome: "Ovo de Natal", categoria: "Lendario", valor: 24.99 },
+            { nome: "Flamingo", categoria: "Ultra-Raro", valor: 19.99 },
+            { nome: "Leao", categoria: "Ultra-Raro", valor: 18.99 },
+            { nome: "Cachorro Azul", categoria: "Incomum", valor: 9.99 },
+            { nome: "Pelicano", categoria: "Ultra-Raro", valor: 8.99 },
+            { nome: "Canguru", categoria: "Lendario", valor: 19.99 },
+            { nome: "Elefante", categoria: "Raro", valor: 19.99 },
+            { nome: "Crocodilo", categoria: "Ultra-Raro", valor: 17.99 },
+            { nome: "Unicornio de Balao", categoria: "Lendario", valor: 9.99 },
+            { nome: "Dragao Morcego Fada", categoria: "Lendario", valor: 15.99 },
+            { nome: "Dragao de Chocolate", categoria: "Lendario", valor: 19.99 },
+            { nome: "Mashapup", categoria: "Lendario", valor: 1 },
+            { nome: "Gato Rosa", categoria: "Incomum", valor: 9.90 },
+            { nome: "Dragao de Lava", categoria: "Lendario", valor: 7.99 },
+            { nome: "Dragao Fantasma", categoria: "Lendario", valor: 2.99 },
+            { nome: "Capricornio", categoria: "Lendario", valor: 4.50 },
+            { nome: "Ornitorrinco", categoria: "Ultra-Raro", valor: 3.50 },
+            { nome: "Rinoceronte", categoria: "Lendario", valor: 2.99 },
+            { nome: "Ovo de Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Lobo de Gelo", categoria: "Lendario", valor: 1.90 },
+            { nome: "Polvo", categoria: "Lendario", valor: 1 },
+            { nome: "Camaleao", categoria: "Lendario", valor: 1 },
+            { nome: "Dragao Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Tubarao", categoria: "Lendario", valor: 1 },
+            { nome: "Griffo Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Abelha Rainha", categoria: "Lendario", valor: 3.99 },
+            { nome: "Coruja da Neve", categoria: "Lendario", valor: 1 },
+            { nome: "Lobo de Lava", categoria: "Lendario", valor: 2.50 },
+            { nome: "Fenix", categoria: "Lendario", valor: 1.50 },
+            { nome: "Rena", categoria: "Lendario", valor: 2.50 },
+            { nome: "Quimera", categoria: "Lendario", valor: 1 },
+            { nome: "Vagalume", categoria: "Lendario", valor: 1 },
+            { nome: "Capivara", categoria: "Incomum", valor: 2.50 },
+            { nome: "Morsa Dourada", categoria: "Lendario", valor: 1.90 },
+            { nome: "Urso de Natal", categoria: "Lendario", valor: 4.50 },
+            { nome: "Dragao Antigo", categoria: "Lendario", valor: 1 },
+            { nome: "Faisao Peito Verde", categoria: "Lendario", valor: 1 },
+            { nome: "Joaninha Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Falcao", categoria: "Lendario", valor: 1 },
+            { nome: "Abelha Rei", categoria: "Lendario", valor: 4.50 },
+            { nome: "Gorila Astronauta", categoria: "Lendario", valor: 1 },
+            { nome: "Coruja da Neve", categoria: "Lendario", valor: 1 },
+            { nome: "Rena", categoria: "Raro", valor: 2.50 },
+            { nome: "Lobo de Lava", categoria: "Lendario", valor: 1 },
+            { nome: "Cavalo de Justa", categoria: "Lendario", valor: 1 },
+            { nome: "Polvo", categoria: "Lendario", valor: 1 },
+            { nome: "Fenix", categoria: "Lendario", valor: 1 },
+            { nome: "Borboleta Verde", categoria: "Lendario", valor: 1 },
+            { nome: "Gargula", categoria: "Lendario", valor: 1 },
+            { nome: "Peru", categoria: "Ultra-Raro", valor: 2.50 },
+            { nome: "Quimera", categoria: "Lendario", valor: 1 },
+            { nome: "Beija-flor", categoria: "Ultra-Raro", valor: 1.90 },
+            { nome: "Cisne", categoria: "Raro", valor: 2.50 },
+            { nome: "Pato bobo", categoria: "Incomum", valor: 2.50 },
+            { nome: "Pintinho Maligno", categoria: "Lendario", valor: 1 },
+            { nome: "Nautilus", categoria: "Ultra-Raro", valor: 2.99 },
+            { nome: "Hamster Dourado", categoria: "Lendario", valor: 3.99 },
+            { nome: "Dragao Naga", categoria: "Lendario", valor: 1.75 },
+            { nome: "Urso Polar", categoria: "Raro", valor: 3.99 },
+            { nome: "Camundongo de Campo", categoria: "Lendario", valor: 1 },
+            { nome: "Kraken", categoria: "Lendario", valor: 0.99 },
+            { nome: "Cervo Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Espinossauro", categoria: "Lendario", valor: 1 },
+            { nome: "Amigo Cogumelo", categoria: "Lendario", valor: 1 },
+            { nome: "Amigo Cacto", categoria: "Lendario", valor: 1 },
+            { nome: "Criossphinx", categoria: "Lendario", valor: 1 },
+            { nome: "Vaga-lume", categoria: "Lendario", valor: 1 },
+            { nome: "Pinguim Rei Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Spaniel do Palacio Real", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Pinguim Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Unicornio", categoria: "Lendario", valor: 1.59 },
+            { nome: "Capivara", categoria: "Incomum", valor: 2.99 },
+            { nome: "Mecha Meow", categoria: "Lendario", valor: 1 },
+            { nome: "Albatros Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Alicorn", categoria: "Lendario", valor: 1 },
+            { nome: "Morsa Dourada", categoria: "Lendario", valor: 1 },
+            { nome: "Urso de Natal", categoria: "Lendario", valor: 1 },
+            { nome: "Dragao Antigo", categoria: "Lendario", valor: 1 },
+            { nome: "Faisao de Peito Verde", categoria: "Lendario", valor: 1 },
+            { nome: "Joaninha Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Falcao", categoria: "Lendario", valor: 1 },
+            { nome: "Abelha Rei", categoria: "Lendario", valor: 1 },
+            { nome: "Drake", categoria: "Incomum", valor: 1 },
+            { nome: "Frango", categoria: "Comum", valor: 1 },
+            { nome: "Cordeiro", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Mahi Mahi Diamante", categoria: "Lendario", valor: 1 },
+            { nome: "Dolar de Areia Vermelho", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Unicornio Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Cachorro de Milho", categoria: "Lendario", valor: 1 },
+            { nome: "Cervo Do Mal", categoria: "Lendario", valor: 1 },
+            { nome: "Coelho Fantasma", categoria: "Ultra-Raro", valor: 2.99 },
+            { nome: "Ovo Fossil", categoria: "Lendario", valor: 5.50 },
+            { nome: "Fleur De Gelo", categoria: "Lendario", valor: 1 },
+            { nome: "Pet Bola de Neve", categoria: "Ultra-Raro", valor: 3.99 },
+            { nome: "Rinoceronte La", categoria: "Ultra-Raro", valor: 3.50 },
+            { nome: "Filhote de Tubarao", categoria: "Lendario", valor: 2.99 },
+            { nome: "Ovo Desertico Real", categoria: "Lendario", valor: 1 },
+            { nome: "Cavalo Sem Cabeca", categoria: "Ultra-Raro", valor: 0.99 },
+            { nome: "Baku", categoria: "Lendario", valor: 1 },
+            { nome: "Maneki-Neko", categoria: "Lendario", valor: 1 },
+            { nome: "Cerbero", categoria: "Lendario", valor: 1 },
+            { nome: "Pedra Maligna", categoria: "Raro", valor: 1 },
+            { nome: "Axolote", categoria: "Lendario", valor: 1 },
+            { nome: "Dragao Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Cobra", categoria: "Lendario", valor: 1 },
+            { nome: "Joaninha Dourada", categoria: "Lendario", valor: 1 },
+            { nome: "Leao Guardiao", categoria: "Lendario", valor: 1 },
+            { nome: "Cao Robo", categoria: "Lendario", valor: 1 },
+            { nome: "Macaco de Negocios", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Corvo Espantalho", categoria: "Lendario", valor: 1 },
+            { nome: "Macaco de Brinquedo", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Pavao", categoria: "Lendario", valor: 1 },
+            { nome: "Gato Mumia Dourada de Halloween", categoria: "Lendario", valor: 1 },
+            { nome: "Libelula", categoria: "Lendario", valor: 1 },
+            { nome: "Zebra Flamingo", categoria: "Raro", valor: 1 },
+            { nome: "Grifo Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Coruja Pesadelo", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Chickatrice Maligna", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Ovo Dourado", categoria: "Lendario", valor: 1 },
+            { nome: "Pintinho", categoria: "Comum", valor: 1 },
+            { nome: "Chow-Chow Preto", categoria: "Lendario", valor: 1 },
+            { nome: "Dragao", categoria: "Lendario", valor: 1 },
+            { nome: "Grifo", categoria: "Lendario", valor: 1 },
+            { nome: "Kitsune", categoria: "Lendario", valor: 1 },
+            { nome: "Perdiz", categoria: "Ultra-Raro", valor: 1 },
+            { nome: "Ovo do Oceano", categoria: "Lendario", valor: 0.25 },
+            { nome: "Urso Lunar", categoria: "Lendario", valor: 1 },
+        ];
+
+        const historico = [];
+
+        function buscarPet() {
+            const input = document.getElementById('pesquisa');
+            const filtro = input.value.toLowerCase();
+            const lista = document.getElementById('listaPets');
+            lista.innerHTML = '';
+
+            if (filtro) {
+                historico.length = 0; // Limpa o historico
+                historico.push(filtro); // Adiciona apenas o último termo
+                atualizarHistorico();
+            }
+
+            pets.forEach(pet => {
+                if (pet.nome.toLowerCase().includes(filtro)) {
+                    const item = document.createElement('li');
+                    item.textContent = `${pet.nome} - ${pet.categoria} - Valor: R$ ${pet.valor.toFixed(2).replace('.', ',')}`;
+                    lista.appendChild(item);
+                }
+            });
+        }
+
+        function atualizarHistorico() {
+            const historicoLista = document.getElementById('historicoPesquisas');
+            historicoLista.innerHTML = '';
+
+            historico.forEach(termo => {
+                const item = document.createElement('li');
+                item.textContent = termo;
+                historicoLista.appendChild(item);
+            });
+        }
+
         let calcInput = "";
 
         function toggleCalculator() {
@@ -614,67 +473,35 @@ const pets = [
         }
 
         function clearCalculator() {
-            calcInput = ""; // Limpa o cálculo atual
-            document.getElementById("calcInput").value = ""; // Limpa o campo de entrada
+            calcInput = "";
+            document.getElementById("calcInput").value = "";
         }
 
         function calculate() {
             try {
                 const result = eval(calcInput.replace('×', '*').replace(',', '.'));
-                document.getElementById("calcInput").value = ""; // Limpa o campo de entrada após cálculo
-                calcInput = ""; // Limpa o cálculo atual
-                document.getElementById("calcInput").value = result; // Mostra o resultado
+                document.getElementById("calcInput").value = result;
+                calcInput = ""; // Limpa o cálculo após mostrar o resultado
             } catch {
                 document.getElementById("calcInput").value = "Erro!";
             }
         }
+
     </script>
 
-</body>
-</html>
+<div class="btn-container">
+    <!-- Botão de Pagamento -->
+    <button class="btn-small" onclick="window.open('https://raquelsantos380.github.io/Pagamento/', '_blank')">Pagamento</button>
 
-        <!-- Botão de copiar chave PIX -->
-        <button class="copy-button" onclick="copyPix()">Copiar Chave PIX</button>
-        
-        <p class="instructions">Abra seu app bancário, escolha "Pagar com PIX" e copie a chave no botão acima.</p>
-        <p class="email">raquelgata780@gmail.com</p>
-        <p class="phone">62992900737</p>
-
-        <!-- Botão para acessar após pagamento -->
-        <button class="button-receive" onclick="window.open('https://rakyofficialstore.wordpress.com/como-receber/', '_blank')">Receber após o pagamento</button>
-    </div>
+    <!-- Botão de Contato -->
+    <button class="btn-small" onclick="window.open('https://api.whatsapp.com/send?phone=5562992900737&text=Converse%20com%20a%20Raky%20diretamente%20%21', '_blank')">Contato</button>
 </div>
 
-<script>
-    let calcInput = "";
 
-    function appendToCalculator(value) {
-        calcInput += value;
-        document.getElementById("calcInput").value = calcInput;
-    }
-
-    function clearCalculator() {
-        calcInput = "";
-        document.getElementById("calcInput").value = "";
-        document.getElementById("calcResult").innerText = "Resultado: ";
-    }
-
-    function calculate() {
-        try {
-            const result = eval(calcInput.replace('×', '*'));
-            document.getElementById("calcResult").innerText = "Resultado: " + result;
-        } catch {
-            document.getElementById("calcResult").innerText = "Erro de cálculo!";
-        }
-    }
-
-    function copyPix() {
-        const pixKey = "raquelgata780@gmail.com";
-        navigator.clipboard.writeText(pixKey).then(() => alert("Chave PIX copiada!"));
-    }
-</script>
-
-        <p>2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="#">Saiba mais</a>.</p>
+    <footer>
+        <p>2024 Pesquisa de Pets. Desenvolvido pela RakyOfficialCenter. <a href="https://rakyofficialstore.wordpress.com/sobre/">Saiba mais</a>.</p>
     </footer>
+</body>
+</html>
 </body>
 </html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#e91e63">
-    <meta name="description" content="Pesquise e descubra os valores dos pets do Adopt Me!">
-    <title>Adopt Me Pets - Pesquisa de Valores</title>
+    <meta name="description" content="Pesquise e descubra os valores dos pets do Adopt Me! - Mais de 1000 pets">
+    <title>Adopt Me Pets - Inventário Completo</title>
     <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,7 +25,6 @@
             position: relative;
         }
 
-        /* Bolinhas decorativas */
         body::before {
             content: '';
             position: fixed;
@@ -37,15 +36,14 @@
             pointer-events: none;
         }
 
-        /* Container principal */
         .main-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
+        /* Header Glassmorphism */
         .glass-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -55,11 +53,6 @@
             margin-bottom: 25px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
         }
 
         .logo-img {
@@ -76,21 +69,6 @@
             transform: scale(1.05) rotate(5deg);
         }
 
-        .logo-badge {
-            position: absolute;
-            bottom: -5px;
-            right: -10px;
-            background: linear-gradient(135deg, #e91e63, #ff9800);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            border: 3px solid white;
-        }
-
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
@@ -99,29 +77,45 @@
             background-clip: text;
             color: transparent;
             margin-top: 15px;
-            font-weight: 700;
         }
 
         .subtitle {
             color: #666;
             font-size: 0.9rem;
-            margin-top: 8px;
         }
 
-        /* Barra de pesquisa */
-        .search-wrapper {
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: #e91e63; }
+        .stat-label { font-size: 0.75rem; color: #666; }
+
+        /* Search Bar */
+        .search-wrapper {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 60px;
             padding: 5px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .search-wrapper:focus-within {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2);
         }
 
         .search-container {
@@ -136,7 +130,6 @@
             transform: translateY(-50%);
             color: #e91e63;
             font-size: 1.2rem;
-            z-index: 1;
         }
 
         #pesquisa {
@@ -146,9 +139,6 @@
             border-radius: 60px;
             font-size: 1rem;
             background: white;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         #pesquisa:focus {
@@ -156,97 +146,127 @@
             box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.3);
         }
 
-        .clear-search {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-            cursor: pointer;
-            display: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .clear-search:hover {
-            color: #e91e63;
-        }
-
-        /* Cards de estatísticas */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+        /* Filtros Rápidos */
+        .filtros-rapidos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 25px;
+            justify-content: center;
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 15px 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e91e63;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
+        .filtro-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 40px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
             color: #666;
-            margin-top: 5px;
-        }
-
-        /* Seções */
-        .section-title {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin: 25px 0 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(233, 30, 99, 0.3);
+            gap: 8px;
         }
 
-        .section-title i {
-            font-size: 1.5rem;
-            color: #e91e63;
+        .filtro-btn i { font-size: 1rem; }
+
+        .filtro-btn:hover {
+            transform: translateY(-2px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #333;
-            flex: 1;
-        }
-
-        .section-title span {
-            background: linear-gradient(135deg, #e91e63, #ff9800);
+        .filtro-btn.active {
+            background: linear-gradient(135deg, #e91e63, #d81b60);
             color: white;
-            padding: 5px 12px;
+        }
+
+        /* Ordenação */
+        .ordenacao-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            font-size: 0.8rem;
+        }
+
+        .ordenacao-select {
+            padding: 10px 15px;
+            border-radius: 40px;
+            border: 2px solid #e91e63;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .result-info {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .result-info strong {
+            color: #e91e63;
+            font-size: 1.1rem;
+        }
+
+        /* Controles de Paginação */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-weight: 600;
         }
 
-        /* Lista de pets */
+        .page-btn:hover:not(:disabled) {
+            background: #e91e63;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .page-btn.active {
+            background: linear-gradient(135deg, #e91e63, #d81b60);
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-numbers {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Grid de Pets */
         .pets-grid {
             display: grid;
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
             margin-bottom: 20px;
+            min-height: 400px;
         }
 
         .pet-card {
@@ -259,19 +279,24 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border-left: 5px solid;
-            animation: fadeInUp 0.4s ease forwards;
-            opacity: 0;
+            animation: fadeInUp 0.3s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Badge de valor alto */
+        .pet-card.valor-alto::after {
+            content: '💎';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            opacity: 0.5;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .pet-card:hover {
@@ -282,19 +307,12 @@
         .pet-card.lendario { border-left-color: #ff9800; }
         .pet-card.raro { border-left-color: #9c27b0; }
         .pet-card.comum { border-left-color: #2196f3; }
+        .pet-card.ultra { border-left-color: #e91e63; }
         .pet-card.default { border-left-color: #e91e63; }
 
-        .pet-info {
-            flex: 1;
-        }
-
-        .pet-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
+        .pet-info { flex: 1; }
+        .pet-name { font-weight: 700; font-size: 1rem; color: #333; margin-bottom: 5px; }
+        
         .pet-category {
             display: inline-block;
             padding: 3px 12px;
@@ -302,143 +320,34 @@
             font-size: 0.7rem;
             font-weight: 600;
         }
+        .pet-category.lendario { background: linear-gradient(135deg, #ff9800, #ff5722); color: white; }
+        .pet-category.raro { background: linear-gradient(135deg, #9c27b0, #673ab7); color: white; }
+        .pet-category.comum { background: linear-gradient(135deg, #2196f3, #03a9f4); color: white; }
+        .pet-category.ultra { background: linear-gradient(135deg, #e91e63, #c2185b); color: white; }
 
-        .pet-category.lendario {
-            background: linear-gradient(135deg, #ff9800, #ff5722);
-            color: white;
+        .pet-value { text-align: right; }
+        .value-amount { font-size: 1.2rem; font-weight: 800; color: #4caf50; }
+        .value-label { font-size: 0.65rem; color: #999; }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
         }
+        .loading i { font-size: 2.5rem; color: #e91e63; animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .pet-category.raro {
-            background: linear-gradient(135deg, #9c27b0, #673ab7);
-            color: white;
-        }
-
-        .pet-category.comum {
-            background: linear-gradient(135deg, #2196f3, #03a9f4);
-            color: white;
-        }
-
-        .pet-value {
-            text-align: right;
-        }
-
-        .value-amount {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #4caf50;
-        }
-
-        .value-label {
-            font-size: 0.7rem;
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
             color: #999;
         }
-
-        /* Botões */
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 60px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #e91e63, #d81b60);
-            color: white;
-            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #ff9800, #f57c00);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: white;
-            color: #e91e63;
-            border: 2px solid #e91e63;
-        }
-
-        .btn-outline:hover {
-            background: #e91e63;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Histórico */
-        .historico-list {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 5px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .historico-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            transition: background 0.3s ease;
-        }
-
-        .historico-item:hover {
-            background: rgba(233, 30, 99, 0.05);
-        }
-
-        .historico-termo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .historico-termo i {
-            color: #e91e63;
-            font-size: 0.9rem;
-        }
-
-        .btn-remove {
-            background: none;
-            border: none;
-            color: #ccc;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .btn-remove:hover {
-            color: #e91e63;
-        }
+        .empty-state i { font-size: 3rem; margin-bottom: 15px; opacity: 0.5; }
 
         /* Footer */
         .glass-footer {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 20px;
             margin-top: 30px;
@@ -469,217 +378,50 @@
             transform: scale(1.1) rotate(10deg);
         }
 
-        .copyright {
-            font-size: 0.75rem;
-            color: #666;
-        }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #e91e63, #d81b60); border-radius: 10px; }
 
-        .copyright a {
-            color: #e91e63;
-            text-decoration: none;
-        }
-
-        /* Calculadora flutuante */
-        .floating-btn {
+        /* Top Button */
+        .top-btn {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #e91e63, #d81b60);
-            border: none;
             border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
-            color: white;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .floating-btn:hover {
-            transform: scale(1.1) rotate(90deg);
-        }
-
-        .floating-calculator {
-            position: fixed;
-            bottom: 110px;
-            right: 30px;
-            background: white;
-            border-radius: 25px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            display: none;
-            z-index: 1001;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .calc-display {
-            width: 100%;
-            height: 60px;
-            font-size: 1.5rem;
-            text-align: right;
-            padding: 10px;
-            border: 2px solid #e91e63;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            font-family: monospace;
-            font-weight: bold;
-            background: #fce4ec;
-        }
-
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .calc-btn {
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            color: white;
             cursor: pointer;
-            transition: all 0.2s ease;
-            background: #f0f0f0;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
         }
 
-        .calc-btn:hover {
-            transform: scale(0.95);
+        .top-btn.show {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .calc-btn.operator {
-            background: linear-gradient(135deg, #e91e63, #d81b60);
-            color: white;
+        .top-btn:hover {
+            transform: scale(1.1);
         }
 
-        .calc-btn.equals {
-            background: linear-gradient(135deg, #4caf50, #45a049);
-            color: white;
-            grid-column: span 2;
-        }
-
-        .calc-btn.clear {
-            background: #ff5722;
-            color: white;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #e91e63, #d81b60);
-            border-radius: 10px;
-        }
-
-        /* Mensagem vazia */
-        .empty-state {
-            text-align: center;
-            padding: 50px 20px;
-            color: #999;
-        }
-
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            opacity: 0.5;
-        }
-
-        /* Responsividade */
+        /* Responsivo */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .logo-img {
-                width: 70px;
-                height: 70px;
-            }
-
-            .stats-grid {
-                gap: 10px;
-            }
-
-            .stat-value {
-                font-size: 1.2rem;
-            }
-
-            .pet-card {
-                padding: 12px;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .pet-value {
-                text-align: center;
-                margin-top: 8px;
-            }
-
-            .value-amount {
-                font-size: 1.1rem;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .floating-calculator {
-                width: calc(100% - 40px);
-                right: 20px;
-                left: 20px;
-            }
-
-            .floating-btn {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .loading i {
-            font-size: 2rem;
-            color: #e91e63;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            body { padding: 15px; }
+            h1 { font-size: 1.5rem; }
+            .logo-img { width: 70px; height: 70px; }
+            .pets-grid { grid-template-columns: 1fr; }
+            .pet-card { flex-direction: column; text-align: center; }
+            .pet-value { text-align: center; margin-top: 10px; }
+            .filtro-btn { padding: 8px 15px; font-size: 0.75rem; }
+            .filtros-rapidos { gap: 8px; }
         }
     </style>
 </head>
@@ -687,182 +429,265 @@
     <div class="main-container">
         <!-- Header -->
         <div class="glass-header">
-            <div class="logo-wrapper">
-                <img src="Raky.jpg" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/100'">
-                <div class="logo-badge">
-                    <i class="fas fa-paw"></i>
-                </div>
-            </div>
-            <h1>Adopt Me Pets</h1>
-            <div class="subtitle">Pesquise e descubra os valores dos seus pets favoritos</div>
+            <img src="Raky.jpg" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/100'">
+            <h1>🐾 Inventário Completo Adopt Me</h1>
+            <div class="subtitle">Mais de 1000 pets organizados para você</div>
         </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid"></div>
 
         <!-- Search -->
         <div class="search-wrapper">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" id="pesquisa" placeholder="Pesquise pelo nome do pet...">
-                <i class="fas fa-times-circle clear-search" id="clearSearch" onclick="limparPesquisa()"></i>
             </div>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">🐾</div>
-                <div class="stat-value" id="totalPets">0</div>
-                <div class="stat-label">Total de Pets</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">💰</div>
-                <div class="stat-value" id="mediaValor">R$0</div>
-                <div class="stat-label">Média de Valor</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-value" id="totalCategorias">0</div>
-                <div class="stat-label">Categorias</div>
-            </div>
+        <!-- Filtros Rápidos -->
+        <div class="filtros-rapidos" id="filtrosRapidos"></div>
+
+        <!-- Ordenação -->
+        <div class="ordenacao-bar">
+            <div class="result-info" id="resultInfo"></div>
+            <select class="ordenacao-select" id="ordenacaoSelect">
+                <option value="valor_desc">💰 Mais Caros Primeiro ⭐</option>
+                <option value="valor_asc">💰 Mais Baratos Primeiro</option>
+                <option value="nome_asc">📝 Nome (A-Z)</option>
+                <option value="nome_desc">📝 Nome (Z-A)</option>
+                <option value="categoria">🏷️ Por categoria</option>
+            </select>
         </div>
 
-        <!-- Pets Section -->
-        <div class="section-title">
-            <i class="fas fa-paw"></i>
-            <h2>Pets Encontrados</h2>
-            <span id="resultCount">0</span>
-        </div>
-        <div class="pets-grid" id="listaPets">
-            <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Carregando pets...</p>
-            </div>
+        <!-- Grid de Pets -->
+        <div class="pets-grid" id="petsGrid">
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Carregando pets...</p></div>
         </div>
 
-        <!-- History Section -->
-        <div class="section-title">
-            <i class="fas fa-history"></i>
-            <h2>Histórico de Pesquisas</h2>
-        </div>
-        <div class="historico-list" id="historicoPesquisas">
-            <div class="empty-state">
-                <i class="fas fa-search"></i>
-                <p>Nenhuma pesquisa realizada ainda</p>
-            </div>
-        </div>
+        <!-- Paginação -->
+        <div class="pagination-controls" id="paginationControls"></div>
 
-        <!-- Buttons -->
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="window.location.href='https://raquelsantos380.github.io/Recomende-pra-gente-/'">
+        <!-- Botões extras -->
+        <div class="filtros-rapidos" style="justify-content: center;">
+            <button class="filtro-btn" onclick="window.location.href='https://raquelsantos380.github.io/Recomende-pra-gente-/'">
                 <i class="fas fa-question-circle"></i> Não encontrou?
             </button>
-            <button class="btn btn-secondary" onclick="window.open('https://raquelsantos380.github.io/Pagamento/', '_blank')">
+            <button class="filtro-btn" onclick="window.open('https://raquelsantos380.github.io/Pagamento/', '_blank')">
                 <i class="fas fa-credit-card"></i> Pagamento
+            </button>
+            <button class="filtro-btn" onclick="window.open('https://wa.me/61910011', '_blank')">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </button>
         </div>
 
         <!-- Footer -->
         <div class="glass-footer">
             <div class="social-links">
-
-                <a href="https://api.whatsapp.com/send?phone=62992900737" class="social-link" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://rakyofficialstore.wordpress.com/sobre/" class="social-link" target="_blank">
-                    <i class="fas fa-globe"></i>
-                </a>
+                <a href="https://wa.me/61910011" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=62992900737" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://rakyofficialstore.wordpress.com/sobre/" class="social-link" target="_blank"><i class="fas fa-globe"></i></a>
             </div>
             <div class="copyright">
                 <p>© 2024 Pesquisa de Pets | Desenvolvido com <i class="fas fa-heart" style="color: #e91e63;"></i> pela RakyOfficialCenter</p>
-                <p><a href="https://rakyofficialstore.wordpress.com/sobre/" target="_blank">Saiba mais sobre nós</a></p>
             </div>
         </div>
     </div>
 
-    <!-- Floating Calculator -->
-    <button class="floating-btn" id="toggleCalculator">
-        <i class="fas fa-calculator"></i>
-    </button>
-    <div class="floating-calculator" id="calculator">
-        <input type="text" id="calcInput" class="calc-display" readonly>
-        <div class="calc-buttons">
-            <button class="calc-btn" onclick="calcAppend('7')">7</button>
-            <button class="calc-btn" onclick="calcAppend('8')">8</button>
-            <button class="calc-btn" onclick="calcAppend('9')">9</button>
-            <button class="calc-btn operator" onclick="calcAppend('+')">+</button>
-            <button class="calc-btn" onclick="calcAppend('4')">4</button>
-            <button class="calc-btn" onclick="calcAppend('5')">5</button>
-            <button class="calc-btn" onclick="calcAppend('6')">6</button>
-            <button class="calc-btn operator" onclick="calcAppend('-')">-</button>
-            <button class="calc-btn" onclick="calcAppend('1')">1</button>
-            <button class="calc-btn" onclick="calcAppend('2')">2</button>
-            <button class="calc-btn" onclick="calcAppend('3')">3</button>
-            <button class="calc-btn operator" onclick="calcAppend('*')">×</button>
-            <button class="calc-btn" onclick="calcAppend('0')">0</button>
-            <button class="calc-btn" onclick="calcAppend('.')">.</button>
-            <button class="calc-btn equals" onclick="calcCalculate()">=</button>
-            <button class="calc-btn operator" onclick="calcAppend('/')">÷</button>
-            <button class="calc-btn clear" onclick="calcClear()">C</button>
-        </div>
+    <!-- Botão Voltar ao Topo -->
+    <div class="top-btn" id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <script src="pets.js"></script>
     <script>
-        // Variáveis globais
-        let historico = [];
-        let calcInput = "";
+        // Configurações
+        const ITENS_POR_PAGINA = 20;
+        let petsFiltrados = [];
+        let paginaAtual = 1;
+        let filtroAtivo = 'todos';
+        let ordenacaoAtual = 'valor_desc'; // PADRÃO: MAIS CAROS PRIMEIRO
+        let buscaTexto = '';
 
-        // Função principal de busca
-        function buscarPet() {
-            const input = document.getElementById('pesquisa');
-            const filtro = input.value.trim().toLowerCase();
-            const lista = document.getElementById('listaPets');
-            
-            // Mostrar clear button
-            const clearBtn = document.getElementById('clearSearch');
-            clearBtn.style.display = filtro ? 'block' : 'none';
-            
-            // Adicionar ao histórico
-            if (filtro && !historico.includes(filtro) && filtro.length > 0) {
-                historico.unshift(filtro);
-                if (historico.length > 10) historico.pop();
-                atualizarHistorico();
-            }
-            
-            // Filtrar pets
-            let resultados = [];
-            if (!filtro) {
-                resultados = pets;
+        // Categorias para filtro
+        const categorias = ['todos', 'lendario', 'raro', 'ultra', 'comum', 'alto_valor', 'baixo_valor'];
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof pets !== 'undefined') {
+                inicializar();
+                // Mostrar/esconder botão topo
+                window.addEventListener('scroll', function() {
+                    const topBtn = document.getElementById('topBtn');
+                    if (window.scrollY > 300) {
+                        topBtn.classList.add('show');
+                    } else {
+                        topBtn.classList.remove('show');
+                    }
+                });
             } else {
-                resultados = pets.filter(pet => 
-                    pet.nome.toLowerCase().includes(filtro) ||
-                    pet.categoria.toLowerCase().includes(filtro)
+                console.error('Arquivo pets.js não carregado');
+                document.getElementById('petsGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Erro ao carregar pets!</p></div>';
+            }
+        });
+
+        function inicializar() {
+            criarFiltrosRapidos();
+            criarStats();
+            aplicarFiltros();
+        }
+
+        function criarStats() {
+            const total = pets.length;
+            const categoriasUnicas = [...new Set(pets.map(p => p.categoria.toLowerCase()))];
+            const valores = pets.map(p => p.valor);
+            const maiorValor = Math.max(...valores);
+            const menorValor = Math.min(...valores);
+            
+            const stats = [
+                { icon: '🐾', value: total, label: 'Total de Pets' },
+                { icon: '🏷️', value: categoriasUnicas.length, label: 'Categorias' },
+                { icon: '💎', value: `R$ ${maiorValor.toFixed(2)}`, label: 'Mais Caro' },
+                { icon: '🎁', value: `R$ ${menorValor.toFixed(2)}`, label: 'Mais Barato' }
+            ];
+            
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = stats.map(s => `
+                <div class="stat-card">
+                    <div class="stat-icon">${s.icon}</div>
+                    <div class="stat-value">${s.value}</div>
+                    <div class="stat-label">${s.label}</div>
+                </div>
+            `).join('');
+        }
+
+        function criarFiltrosRapidos() {
+            const botoes = [
+                { id: 'todos', icon: '📋', label: 'Todos os Pets', cor: '' },
+                { id: 'lendario', icon: '👑', label: 'Lendários', cor: 'lendario' },
+                { id: 'ultra', icon: '⭐', label: 'Ultra Raros', cor: 'ultra' },
+                { id: 'raro', icon: '💎', label: 'Raros', cor: 'raro' },
+                { id: 'comum', icon: '🌟', label: 'Comuns', cor: 'comum' },
+                { id: 'alto_valor', icon: '💰', label: 'Alto Valor (R$1000+)', cor: '' },
+                { id: 'baixo_valor', icon: '🎁', label: 'Baixo Valor (R$100-)', cor: '' }
+            ];
+            
+            const container = document.getElementById('filtrosRapidos');
+            container.innerHTML = botoes.map(btn => `
+                <button class="filtro-btn ${filtroAtivo === btn.id ? 'active' : ''}" onclick="aplicarFiltroCategoria('${btn.id}')">
+                    <i>${btn.icon}</i> ${btn.label}
+                </button>
+            `).join('');
+        }
+
+        function aplicarFiltroCategoria(categoria) {
+            filtroAtivo = categoria;
+            paginaAtual = 1;
+            criarFiltrosRapidos();
+            aplicarFiltros();
+        }
+
+        function aplicarFiltros() {
+            let resultados = [...pets];
+            
+            // Filtro por busca
+            const buscaInput = document.getElementById('pesquisa');
+            buscaTexto = buscaInput.value.trim().toLowerCase();
+            
+            if (buscaTexto) {
+                resultados = resultados.filter(pet => 
+                    pet.nome.toLowerCase().includes(buscaTexto) ||
+                    pet.categoria.toLowerCase().includes(buscaTexto)
                 );
             }
             
-            // Atualizar contador
-            document.getElementById('resultCount').innerText = resultados.length;
+            // Filtro por categoria
+            if (filtroAtivo !== 'todos') {
+                if (filtroAtivo === 'alto_valor') {
+                    resultados = resultados.filter(pet => pet.valor >= 1000);
+                } else if (filtroAtivo === 'baixo_valor') {
+                    resultados = resultados.filter(pet => pet.valor <= 100);
+                } else {
+                    resultados = resultados.filter(pet => 
+                        pet.categoria.toLowerCase() === filtroAtivo
+                    );
+                }
+            }
             
-            // Renderizar resultados
-            if (resultados.length === 0) {
-                lista.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-paw"></i>
-                        <p>Nenhum pet encontrado com "${filtro || '...'}"</p>
-                        <small>Tente outro nome ou categoria</small>
-                    </div>
-                `;
-            } else {
-                lista.innerHTML = '';
-                resultados.forEach((pet, index) => {
-                    const card = document.createElement('div');
-                    let categoriaClass = '';
-                    if (pet.categoria.toLowerCase().includes('lendario')) categoriaClass = 'lendario';
-                    else if (pet.categoria.toLowerCase().includes('raro')) categoriaClass = 'raro';
-                    else categoriaClass = 'comum';
-                    
-                    card.className = `pet-card ${categoriaClass}`;
-                    card.style.animationDelay = `${index * 0.03}s`;
-                    card.innerHTML = `
+            // Ordenação (PADRÃO: MAIS CAROS PRIMEIRO)
+            const ordenacao = document.getElementById('ordenacaoSelect').value;
+            ordenacaoAtual = ordenacao;
+            
+            switch(ordenacaoAtual) {
+                case 'nome_asc':
+                    resultados.sort((a, b) => a.nome.localeCompare(b.nome));
+                    break;
+                case 'nome_desc':
+                    resultados.sort((a, b) => b.nome.localeCompare(a.nome));
+                    break;
+                case 'valor_asc':
+                    resultados.sort((a, b) => a.valor - b.valor);
+                    break;
+                case 'valor_desc':
+                    resultados.sort((a, b) => b.valor - a.valor);
+                    break;
+                case 'categoria':
+                    resultados.sort((a, b) => a.categoria.localeCompare(b.categoria));
+                    break;
+                default:
+                    resultados.sort((a, b) => b.valor - a.valor);
+            }
+            
+            petsFiltrados = resultados;
+            atualizarInfo();
+            renderizarPagina();
+        }
+
+        function atualizarInfo() {
+            const total = petsFiltrados.length;
+            const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA + 1;
+            const fim = Math.min(paginaAtual * ITENS_POR_PAGINA, total);
+            
+            let ordemTexto = '';
+            if (ordenacaoAtual === 'valor_desc') ordemTexto = ' 💰 Mais caros primeiro';
+            else if (ordenacaoAtual === 'valor_asc') ordemTexto = ' 💰 Mais baratos primeiro';
+            else if (ordenacaoAtual === 'nome_asc') ordemTexto = ' 📝 Ordem alfabética A-Z';
+            else if (ordenacaoAtual === 'nome_desc') ordemTexto = ' 📝 Ordem alfabética Z-A';
+            else if (ordenacaoAtual === 'categoria') ordemTexto = ' 🏷️ Por categoria';
+            
+            document.getElementById('resultInfo').innerHTML = `
+                <i class="fas fa-paw"></i> Mostrando <strong>${inicio}-${fim}</strong> de <strong>${total}</strong> pets
+                ${buscaTexto ? ` | 🔍 "${buscaTexto}"` : ''}
+                ${filtroAtivo !== 'todos' ? ` | 🎯 ${filtroAtivo.replace('_', ' ')}` : ''}
+                <span style="display: block; font-size: 0.7rem; margin-top: 5px;">${ordemTexto}</span>
+            `;
+        }
+
+        function renderizarPagina() {
+            const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+            const fim = inicio + ITENS_POR_PAGINA;
+            const petsPagina = petsFiltrados.slice(inicio, fim);
+            const grid = document.getElementById('petsGrid');
+            
+            if (petsPagina.length === 0) {
+                grid.innerHTML = `<div class="empty-state"><i class="fas fa-paw"></i><p>Nenhum pet encontrado!</p></div>`;
+                document.getElementById('paginationControls').innerHTML = '';
+                return;
+            }
+            
+            grid.innerHTML = petsPagina.map((pet, idx) => {
+                let categoriaClass = '';
+                const catLower = pet.categoria.toLowerCase();
+                if (catLower.includes('lendario')) categoriaClass = 'lendario';
+                else if (catLower.includes('ultra')) categoriaClass = 'ultra';
+                else if (catLower.includes('raro')) categoriaClass = 'raro';
+                else categoriaClass = 'comum';
+                
+                // Adicionar classe especial para valores altos
+                const valorAltoClass = pet.valor >= 1000 ? 'valor-alto' : '';
+                
+                return `
+                    <div class="pet-card ${categoriaClass} ${valorAltoClass}" style="animation-delay: ${(idx % 20) * 0.02}s">
                         <div class="pet-info">
                             <div class="pet-name">${pet.nome}</div>
                             <span class="pet-category ${categoriaClass}">${pet.categoria}</span>
@@ -871,155 +696,60 @@
                             <div class="value-amount">R$ ${pet.valor.toFixed(2).replace('.', ',')}</div>
                             <div class="value-label">valor aproximado</div>
                         </div>
-                    `;
-                    lista.appendChild(card);
-                });
-            }
-            
-            // Atualizar estatísticas
-            atualizarEstatisticas();
-        }
-        
-        // Atualizar estatísticas
-        function atualizarEstatisticas() {
-            const total = pets.length;
-            const media = pets.reduce((sum, p) => sum + p.valor, 0) / total;
-            const categorias = new Set(pets.map(p => p.categoria)).size;
-            
-            document.getElementById('totalPets').innerText = total;
-            document.getElementById('mediaValor').innerHTML = `R$ ${media.toFixed(2).replace('.', ',')}`;
-            document.getElementById('totalCategorias').innerText = categorias;
-        }
-        
-        // Atualizar histórico
-        function atualizarHistorico() {
-            const container = document.getElementById('historicoPesquisas');
-            
-            if (historico.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-search"></i>
-                        <p>Nenhuma pesquisa realizada ainda</p>
                     </div>
                 `;
+            }).join('');
+            
+            renderizarPaginacao();
+        }
+
+        function renderizarPaginacao() {
+            const totalPaginas = Math.ceil(petsFiltrados.length / ITENS_POR_PAGINA);
+            const container = document.getElementById('paginationControls');
+            
+            if (totalPaginas <= 1) {
+                container.innerHTML = '';
                 return;
             }
             
-            container.innerHTML = '';
-            historico.forEach(termo => {
-                const item = document.createElement('div');
-                item.className = 'historico-item';
-                item.innerHTML = `
-                    <div class="historico-termo">
-                        <i class="fas fa-search"></i>
-                        <span>${termo}</span>
-                    </div>
-                    <button class="btn-remove" onclick="removerDoHistorico('${termo.replace(/'/g, "\\'")}')">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                container.appendChild(item);
-            });
-        }
-        
-        // Remover do histórico
-        function removerDoHistorico(termo) {
-            const index = historico.indexOf(termo);
-            if (index > -1) {
-                historico.splice(index, 1);
-                atualizarHistorico();
-            }
-        }
-        
-        // Limpar pesquisa
-        function limparPesquisa() {
-            document.getElementById('pesquisa').value = '';
-            buscarPet();
-        }
-        
-        // Calculadora
-        function toggleCalculator() {
-            const calc = document.getElementById('calculator');
-            const btn = document.getElementById('toggleCalculator');
-            const isVisible = calc.style.display === 'block';
+            let botoes = '';
+            botoes += `<button class="page-btn" onclick="mudarPagina(1)" ${paginaAtual === 1 ? 'disabled' : ''}>«</button>`;
+            botoes += `<button class="page-btn" onclick="mudarPagina(${paginaAtual - 1})" ${paginaAtual === 1 ? 'disabled' : ''}>‹</button>`;
             
-            calc.style.display = isVisible ? 'none' : 'block';
-            if (!isVisible) {
-                btn.style.transform = 'rotate(90deg)';
-            } else {
-                btn.style.transform = 'rotate(0deg)';
-            }
-        }
-        
-        function calcAppend(value) {
-            calcInput += value;
-            document.getElementById('calcInput').value = calcInput;
-        }
-        
-        function calcClear() {
-            calcInput = '';
-            document.getElementById('calcInput').value = '';
-        }
-        
-        function calcCalculate() {
-            try {
-                let expr = calcInput.replace(/×/g, '*').replace(/÷/g, '/');
-                let result = eval(expr);
-                if (isNaN(result) || !isFinite(result)) throw new Error();
-                document.getElementById('calcInput').value = result;
-                calcInput = result.toString();
-            } catch (error) {
-                document.getElementById('calcInput').value = 'Erro!';
-                setTimeout(calcClear, 1500);
-            }
-        }
-        
-        // Eventos
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof pets !== 'undefined') {
-                buscarPet();
-            } else {
-                console.error('Arquivo pets.js não carregado');
-                document.getElementById('listaPets').innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>Erro ao carregar os pets!</p>
-                        <small>Verifique se o arquivo pets.js existe</small>
-                    </div>
-                `;
+            // Mostrar páginas (máximo 5)
+            let inicioPag = Math.max(1, paginaAtual - 2);
+            let fimPag = Math.min(totalPaginas, inicioPag + 4);
+            if (fimPag - inicioPag < 4) inicioPag = Math.max(1, fimPag - 4);
+            
+            for (let i = inicioPag; i <= fimPag; i++) {
+                botoes += `<button class="page-btn ${i === paginaAtual ? 'active' : ''}" onclick="mudarPagina(${i})">${i}</button>`;
             }
             
-            // Event listener para pesquisa
-            const searchInput = document.getElementById('pesquisa');
-            searchInput.addEventListener('keyup', buscarPet);
+            botoes += `<button class="page-btn" onclick="mudarPagina(${paginaAtual + 1})" ${paginaAtual === totalPaginas ? 'disabled' : ''}>›</button>`;
+            botoes += `<button class="page-btn" onclick="mudarPagina(${totalPaginas})" ${paginaAtual === totalPaginas ? 'disabled' : ''}>»</button>`;
             
-            // Fechar calculadora ao clicar fora
-            document.addEventListener('click', function(event) {
-                const calc = document.getElementById('calculator');
-                const btn = document.getElementById('toggleCalculator');
-                if (calc.style.display === 'block' && !calc.contains(event.target) && !btn.contains(event.target)) {
-                    toggleCalculator();
-                }
-            });
-            
-            // Teclado da calculadora
-            document.addEventListener('keydown', function(e) {
-                if (e.key >= '0' && e.key <= '9' || e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' || e.key === '.') {
-                    e.preventDefault();
-                    calcAppend(e.key === '*' ? '×' : e.key === '/' ? '÷' : e.key);
-                } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    calcCalculate();
-                } else if (e.key === 'Escape') {
-                    if (document.getElementById('calculator').style.display === 'block') {
-                        toggleCalculator();
-                    }
-                }
-            });
+            container.innerHTML = botoes;
+        }
+
+        function mudarPagina(pagina) {
+            const totalPaginas = Math.ceil(petsFiltrados.length / ITENS_POR_PAGINA);
+            if (pagina < 1 || pagina > totalPaginas) return;
+            paginaAtual = pagina;
+            renderizarPagina();
+            atualizarInfo();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Event Listeners
+        document.getElementById('pesquisa').addEventListener('keyup', function() {
+            paginaAtual = 1;
+            aplicarFiltros();
         });
         
-        // Botão da calculadora
-        document.getElementById('toggleCalculator').addEventListener('click', toggleCalculator);
+        document.getElementById('ordenacaoSelect').addEventListener('change', function() {
+            paginaAtual = 1;
+            aplicarFiltros();
+        });
     </script>
 </body>
 </html>

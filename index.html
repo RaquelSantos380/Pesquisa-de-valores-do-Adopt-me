@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#e91e63">
-    <meta name="description" content="Pesquise e descubra os valores dos pets do Adopt Me! - Mais de 1000 pets">
-    <title>Adopt Me Pets - Inventário Completo</title>
+    <meta name="description" content="Pesquise e descubra os valores dos pets do Adopt Me! - Estoque RakyOfficialStore">
+    <title>Adopt Me Pets - Estoque RakyOfficialStore</title>
     <link rel="icon" type="image/x-icon" href="Raky%20-%20Copia.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -132,7 +132,7 @@
             font-size: 1.2rem;
         }
 
-        #pesquisa {
+        #pesquisa, #pesquisaEstoque {
             width: 100%;
             padding: 18px 20px 18px 55px;
             border: none;
@@ -141,7 +141,7 @@
             background: white;
         }
 
-        #pesquisa:focus {
+        #pesquisa:focus, #pesquisaEstoque:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.3);
         }
@@ -284,7 +284,6 @@
             overflow: hidden;
         }
 
-        /* Badge de valor alto */
         .pet-card.valor-alto::after {
             content: '💎';
             position: absolute;
@@ -344,6 +343,110 @@
             color: #999;
         }
         .empty-state i { font-size: 3rem; margin-bottom: 15px; opacity: 0.5; }
+
+        /* Seção Estoque */
+        .estoque-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid #4caf50;
+        }
+
+        .estoque-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #4caf50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .estoque-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .encomendar-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 25px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .encomendar-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.4);
+        }
+
+        .encomendar-btn i {
+            margin-right: 10px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .estoque-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #4caf50;
+            animation: fadeInUp 0.3s ease forwards;
+        }
+
+        .estoque-card:hover {
+            transform: translateX(3px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .estoque-info { flex: 1; }
+        .estoque-name { font-weight: 700; font-size: 0.95rem; color: #333; }
+        .estoque-variacao {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: #e8f5e9;
+            color: #2e7d32;
+            margin-top: 3px;
+        }
+        .estoque-categoria {
+            display: block;
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .estoque-value { text-align: right; }
+        .estoque-amount { font-size: 1.1rem; font-weight: 800; color: #4caf50; }
+        .estoque-label { font-size: 0.6rem; color: #999; }
+
+        .estoque-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 10px;
+        }
 
         /* Footer */
         .glass-footer {
@@ -418,10 +521,14 @@
             h1 { font-size: 1.5rem; }
             .logo-img { width: 70px; height: 70px; }
             .pets-grid { grid-template-columns: 1fr; }
+            .estoque-grid { grid-template-columns: 1fr; }
             .pet-card { flex-direction: column; text-align: center; }
+            .estoque-card { flex-direction: column; text-align: center; }
             .pet-value { text-align: center; margin-top: 10px; }
+            .estoque-value { text-align: center; margin-top: 5px; }
             .filtro-btn { padding: 8px 15px; font-size: 0.75rem; }
             .filtros-rapidos { gap: 8px; }
+            .estoque-title { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -468,6 +575,37 @@
         <!-- Paginação -->
         <div class="pagination-controls" id="paginationControls"></div>
 
+        <!-- 🛒 SEÇÃO DE ESTOQUE -->
+        <div class="estoque-section" id="estoqueSection">
+            <h2 class="estoque-title">🛒 Meu Estoque Disponivel</h2>
+            <p class="estoque-subtitle">Pets que tenho em estoque para pronta-entrega!</p>
+            
+            <a href="https://rakyofficialstore.wordpress.com/como-receber/" target="_blank" class="encomendar-btn">
+                <i class="fas fa-shopping-cart"></i> Quer Encomendar? Clique Aqui!
+            </a>
+
+            <div class="search-wrapper" style="margin-bottom: 15px;">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="pesquisaEstoque" placeholder="Pesquise no estoque...">
+                </div>
+            </div>
+
+            <div class="ordenacao-bar" style="margin-bottom: 15px;">
+                <div class="result-info" id="resultInfoEstoque"></div>
+                <select class="ordenacao-select" id="ordenacaoEstoqueSelect">
+                    <option value="valor_desc">💰 Mais Caros Primeiro</option>
+                    <option value="valor_asc">💰 Mais Baratos Primeiro</option>
+                    <option value="nome_asc">📝 Nome (A-Z)</option>
+                    <option value="categoria">🏷️ Por categoria</option>
+                </select>
+            </div>
+
+            <div class="estoque-grid" id="estoqueGrid">
+                <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Carregando estoque...</p></div>
+            </div>
+        </div>
+
         <!-- Botões extras -->
         <div class="filtros-rapidos" style="justify-content: center;">
             <button class="filtro-btn" onclick="window.location.href='https://raquelsantos380.github.io/Recomende-pra-gente-/'">
@@ -496,23 +634,25 @@
     </div>
 
     <script src="pets.js"></script>
+    <script src="estoque.js"></script>
     <script>
         // Configurações
         const ITENS_POR_PAGINA = 20;
+        const ITENS_ESTOQUE_POR_PAGINA = 30;
         let petsFiltrados = [];
+        let estoqueFiltrado = [];
         let paginaAtual = 1;
+        let paginaEstoqueAtual = 1;
         let filtroAtivo = 'todos';
-        let ordenacaoAtual = 'valor_desc'; // PADRÃO: MAIS CAROS PRIMEIRO
+        let ordenacaoAtual = 'valor_desc';
+        let ordenacaoEstoqueAtual = 'valor_desc';
         let buscaTexto = '';
-
-        // Categorias para filtro
-        const categorias = ['todos', 'lendario', 'raro', 'ultra', 'comum', 'alto_valor', 'baixo_valor'];
+        let buscaEstoqueTexto = '';
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof pets !== 'undefined') {
                 inicializar();
-                // Mostrar/esconder botão topo
                 window.addEventListener('scroll', function() {
                     const topBtn = document.getElementById('topBtn');
                     if (window.scrollY > 300) {
@@ -525,12 +665,23 @@
                 console.error('Arquivo pets.js não carregado');
                 document.getElementById('petsGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Erro ao carregar pets!</p></div>';
             }
+            
+            if (typeof estoque !== 'undefined') {
+                inicializarEstoque();
+            } else {
+                console.error('Arquivo estoque.js não carregado');
+                document.getElementById('estoqueGrid').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Erro ao carregar estoque!</p></div>';
+            }
         });
 
         function inicializar() {
             criarFiltrosRapidos();
             criarStats();
             aplicarFiltros();
+        }
+
+        function inicializarEstoque() {
+            aplicarFiltrosEstoque();
         }
 
         function criarStats() {
@@ -559,13 +710,13 @@
 
         function criarFiltrosRapidos() {
             const botoes = [
-                { id: 'todos', icon: '📋', label: 'Todos os Pets', cor: '' },
-                { id: 'lendario', icon: '👑', label: 'Lendários', cor: 'lendario' },
-                { id: 'ultra', icon: '⭐', label: 'Ultra Raros', cor: 'ultra' },
-                { id: 'raro', icon: '💎', label: 'Raros', cor: 'raro' },
-                { id: 'comum', icon: '🌟', label: 'Comuns', cor: 'comum' },
-                { id: 'alto_valor', icon: '💰', label: 'Alto Valor (R$1000+)', cor: '' },
-                { id: 'baixo_valor', icon: '🎁', label: 'Baixo Valor (R$100-)', cor: '' }
+                { id: 'todos', icon: '📋', label: 'Todos os Pets' },
+                { id: 'lendario', icon: '👑', label: 'Lendários' },
+                { id: 'ultra', icon: '⭐', label: 'Ultra Raros' },
+                { id: 'raro', icon: '💎', label: 'Raros' },
+                { id: 'comum', icon: '🌟', label: 'Comuns' },
+                { id: 'alto_valor', icon: '💰', label: 'Alto Valor (R$1000+)' },
+                { id: 'baixo_valor', icon: '🎁', label: 'Baixo Valor (R$100-)' }
             ];
             
             const container = document.getElementById('filtrosRapidos');
@@ -586,7 +737,6 @@
         function aplicarFiltros() {
             let resultados = [...pets];
             
-            // Filtro por busca
             const buscaInput = document.getElementById('pesquisa');
             buscaTexto = buscaInput.value.trim().toLowerCase();
             
@@ -597,7 +747,6 @@
                 );
             }
             
-            // Filtro por categoria
             if (filtroAtivo !== 'todos') {
                 if (filtroAtivo === 'alto_valor') {
                     resultados = resultados.filter(pet => pet.valor >= 1000);
@@ -610,7 +759,6 @@
                 }
             }
             
-            // Ordenação (PADRÃO: MAIS CAROS PRIMEIRO)
             const ordenacao = document.getElementById('ordenacaoSelect').value;
             ordenacaoAtual = ordenacao;
             
@@ -644,18 +792,10 @@
             const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA + 1;
             const fim = Math.min(paginaAtual * ITENS_POR_PAGINA, total);
             
-            let ordemTexto = '';
-            if (ordenacaoAtual === 'valor_desc') ordemTexto = ' 💰 Mais caros primeiro';
-            else if (ordenacaoAtual === 'valor_asc') ordemTexto = ' 💰 Mais baratos primeiro';
-            else if (ordenacaoAtual === 'nome_asc') ordemTexto = ' 📝 Ordem alfabética A-Z';
-            else if (ordenacaoAtual === 'nome_desc') ordemTexto = ' 📝 Ordem alfabética Z-A';
-            else if (ordenacaoAtual === 'categoria') ordemTexto = ' 🏷️ Por categoria';
-            
             document.getElementById('resultInfo').innerHTML = `
                 <i class="fas fa-paw"></i> Mostrando <strong>${inicio}-${fim}</strong> de <strong>${total}</strong> pets
                 ${buscaTexto ? ` | 🔍 "${buscaTexto}"` : ''}
                 ${filtroAtivo !== 'todos' ? ` | 🎯 ${filtroAtivo.replace('_', ' ')}` : ''}
-                <span style="display: block; font-size: 0.7rem; margin-top: 5px;">${ordemTexto}</span>
             `;
         }
 
@@ -679,7 +819,6 @@
                 else if (catLower.includes('raro')) categoriaClass = 'raro';
                 else categoriaClass = 'comum';
                 
-                // Adicionar classe especial para valores altos
                 const valorAltoClass = pet.valor >= 1000 ? 'valor-alto' : '';
                 
                 return `
@@ -712,7 +851,6 @@
             botoes += `<button class="page-btn" onclick="mudarPagina(1)" ${paginaAtual === 1 ? 'disabled' : ''}>«</button>`;
             botoes += `<button class="page-btn" onclick="mudarPagina(${paginaAtual - 1})" ${paginaAtual === 1 ? 'disabled' : ''}>‹</button>`;
             
-            // Mostrar páginas (máximo 5)
             let inicioPag = Math.max(1, paginaAtual - 2);
             let fimPag = Math.min(totalPaginas, inicioPag + 4);
             if (fimPag - inicioPag < 4) inicioPag = Math.max(1, fimPag - 4);
@@ -736,6 +874,83 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Funções do Estoque
+        function aplicarFiltrosEstoque() {
+            let resultados = [...estoque];
+            
+            buscaEstoqueTexto = document.getElementById('pesquisaEstoque').value.trim().toLowerCase();
+            
+            if (buscaEstoqueTexto) {
+                resultados = resultados.filter(item => 
+                    item.nome.toLowerCase().includes(buscaEstoqueTexto) ||
+                    item.categoria.toLowerCase().includes(buscaEstoqueTexto) ||
+                    item.variacao.toLowerCase().includes(buscaEstoqueTexto)
+                );
+            }
+            
+            ordenacaoEstoqueAtual = document.getElementById('ordenacaoEstoqueSelect').value;
+            
+            switch(ordenacaoEstoqueAtual) {
+                case 'nome_asc':
+                    resultados.sort((a, b) => a.nome.localeCompare(b.nome));
+                    break;
+                case 'valor_asc':
+                    resultados.sort((a, b) => a.valor - b.valor);
+                    break;
+                case 'valor_desc':
+                    resultados.sort((a, b) => b.valor - a.valor);
+                    break;
+                case 'categoria':
+                    resultados.sort((a, b) => a.categoria.localeCompare(b.categoria));
+                    break;
+                default:
+                    resultados.sort((a, b) => b.valor - a.valor);
+            }
+            
+            estoqueFiltrado = resultados;
+            atualizarInfoEstoque();
+            renderizarEstoque();
+        }
+
+        function atualizarInfoEstoque() {
+            const total = estoqueFiltrado.length;
+            const inicio = (paginaEstoqueAtual - 1) * ITENS_ESTOQUE_POR_PAGINA + 1;
+            const fim = Math.min(paginaEstoqueAtual * ITENS_ESTOQUE_POR_PAGINA, total);
+            
+            document.getElementById('resultInfoEstoque').innerHTML = `
+                <i class="fas fa-box"></i> Estoque: <strong>${inicio}-${fim}</strong> de <strong>${total}</strong> itens
+                ${buscaEstoqueTexto ? ` | 🔍 "${buscaEstoqueTexto}"` : ''}
+            `;
+        }
+
+        function renderizarEstoque() {
+            const inicio = (paginaEstoqueAtual - 1) * ITENS_ESTOQUE_POR_PAGINA;
+            const fim = inicio + ITENS_ESTOQUE_POR_PAGINA;
+            const itensPagina = estoqueFiltrado.slice(inicio, fim);
+            const grid = document.getElementById('estoqueGrid');
+            
+            if (itensPagina.length === 0) {
+                grid.innerHTML = `<div class="empty-state"><i class="fas fa-box-open"></i><p>Nenhum item encontrado no estoque!</p></div>`;
+                return;
+            }
+            
+            grid.innerHTML = itensPagina.map((item, idx) => {
+                return `
+                    <div class="estoque-card" style="animation-delay: ${(idx % 20) * 0.01}s">
+                        <div class="estoque-info">
+                            <div class="estoque-name">${item.nome}</div>
+                            <span class="estoque-variacao">${item.variacao}</span>
+                            <span class="estoque-categoria">${item.categoria}</span>
+                        </div>
+                        <div class="estoque-value">
+                            <div class="estoque-amount">R$ ${item.valor.toFixed(2).replace('.', ',')}</div>
+                            <div class="estoque-label">disponível</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
         // Event Listeners
         document.getElementById('pesquisa').addEventListener('keyup', function() {
             paginaAtual = 1;
@@ -745,6 +960,16 @@
         document.getElementById('ordenacaoSelect').addEventListener('change', function() {
             paginaAtual = 1;
             aplicarFiltros();
+        });
+
+        document.getElementById('pesquisaEstoque').addEventListener('keyup', function() {
+            paginaEstoqueAtual = 1;
+            aplicarFiltrosEstoque();
+        });
+        
+        document.getElementById('ordenacaoEstoqueSelect').addEventListener('change', function() {
+            paginaEstoqueAtual = 1;
+            aplicarFiltrosEstoque();
         });
     </script>
 </body>

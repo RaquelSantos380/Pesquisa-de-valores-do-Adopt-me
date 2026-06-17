@@ -21,6 +21,7 @@ const estoque = [
     { nome: "Crypta", variacao: "NP", valor: 164.89, categoria: "🔥 Lendário" },
     { nome: "Unicórnio Evil", variacao: "R", valor: 154.89, categoria: "🔥 Lendário" },
     { nome: "Raposa Pitaya Dragon", variacao: "Mega MFR Fruit", valor: 139.89, categoria: "🔥 Lendário" },
+    { nome: "Raposa Pitaya Dragon", variacao: "Mega R Fruit", valor: 7.49, categoria: "🔥 Lendário" },  
     { nome: "Ouriço", variacao: "NP", valor: 79.79, categoria: "🔥 Lendário" },
     { nome: "Rena do Ártico", variacao: "NP", valor: 69.99, categoria: "🔥 Lendário" },
     { nome: "Canguru", variacao: "NFR", valor: 64.99, categoria: "🔥 Lendário" },
@@ -76,6 +77,7 @@ const estoque = [
     { nome: "Unicórnio", variacao: "MFR", valor: 39.89, categoria: "🦄 Alicórnios" },
     { nome: "Unicórnio", variacao: "Neon", valor: 13.99, categoria: "🦄 Alicórnios" },
     { nome: "Alicórnio", variacao: "NR", valor: 5.99, categoria: "🦄 Alicórnios" },
+    { nome: "Alicórnio", variacao: "M", valor: 13.99, categoria: "🦄 Alicórnios" }, 
     { nome: "Unicórnio Dourado", variacao: "NP", valor: 0.99, categoria: "🦄 Alicórnios" },
     { nome: "Alicórnio", variacao: "NP", valor: 0.89, categoria: "🦄 Alicórnios" },
     { nome: "Unicórnio Diamante", variacao: "NP", valor: 0.89, categoria: "🦄 Alicórnios" },
@@ -218,6 +220,7 @@ const estoque = [
     { nome: "Pinguim", variacao: "NP", valor: 2.99, categoria: "🐧 Pinguins" },
     { nome: "Pinguim Rei Dourado", variacao: "NP", valor: 1.19, categoria: "🐧 Pinguins" },
     { nome: "Pinguim de Chocolate", variacao: "NP", valor: 0.99, categoria: "🐧 Pinguins" },
+    { nome: "Pinguim Dango", variacao: "NP", valor: 5.99, categoria: "🐧 Pinguins" },
     
     // 🐵 MACACOS
     { nome: "Gibão Vilão", variacao: "N", valor: 4.99, categoria: "🐵 Macacos" },
@@ -326,10 +329,14 @@ const estoque = [
     
     // 🐉 KITSUNES
     { nome: "Kitsune de Latte", variacao: "NP", valor: 5.99, categoria: "🐉 Kitsunes" },
+    { nome: "Kitsune de Latte", variacao: "MFR", valor: 59.99, categoria: "🐉 Kitsunes" },
     
     // 🦎 DIFERENTES
-    { nome: "Dusk", variacao: "N", valor: 19.99, categoria: "🦎 Diferentes" },
+    { nome: "Dusk", variacao: "NFR", valor: 19.99, categoria: "🦎 Diferentes" },
+    { nome: "Patinho de morango", variacao: "M", valor: 18.99, categoria: "🦎 Diferentes" },  
     { nome: "Patinho Solar", variacao: "NFR", valor: 7.99, categoria: "🦎 Diferentes" },
+    { nome: "Dusk", variacao: "NFR", valor: 19.99, categoria: "🦎 Diferentes" },
+    { nome: "Foguinho emberlight", variacao: "NP", valor: 0.99, categoria: "🦎 Diferentes" }, 
     { nome: "Axolotl", variacao: "R", valor: 7.32, categoria: "🦎 Diferentes" },
     { nome: "Black Springer", variacao: "NR", valor: 6.50, categoria: "🦎 Diferentes" },
     { nome: "Black Springer", variacao: "N", valor: 5.99, categoria: "🦎 Diferentes" },
